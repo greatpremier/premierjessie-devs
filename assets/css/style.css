@@ -1,0 +1,648 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: CreatoDisplay-Black;
+    src: url(../fonts/CreatoDisplay-Black.otf);
+}
+
+@font-face {
+    font-family: CreatoDisplay-BlackItalic;
+    src: url(../fonts/CreatoDisplay-BlackItalic.otf);
+}
+
+@font-face {
+    font-family: CreatoDisplay-Bold;
+    src: url(../fonts/CreatoDisplay-Bold.otf);
+}
+
+@font-face {
+    font-family: CreatoDisplay-BoldItalic;
+    src: url(../fonts/CreatoDisplay-BoldItalic.otf);
+}
+
+@font-face {
+    font-family: CreatoDisplay-ExtraBold;
+    src: url(../fonts/CreatoDisplay-ExtraBold.otf);
+}
+
+@font-face {
+    font-family: CreatoDisplay-ExtraBoldItalic;
+    src: url(../fonts/CreatoDisplay-ExtraBoldItalic.otf);
+}
+
+@font-face {
+    font-family: CreatoDisplay-Light;
+    src: url(../fonts/CreatoDisplay-Light.otf);
+}
+
+@font-face {
+    font-family: CreatoDisplay-LightItalic;
+    src: url(../fonts/CreatoDisplay-LightItalic.otf);
+}
+
+@font-face {
+    font-family: CreatoDisplay-Medium;
+    src: url(../fonts/CreatoDisplay-Medium.otf);
+}
+
+@font-face {
+    font-family: CreatoDisplay-MediumItalic;
+    src: url(../fonts/CreatoDisplay-MediumItalic.otf);
+}
+
+@font-face {
+    font-family: CreatoDisplay-Regular;
+    src: url(../fonts/CreatoDisplay-Regular.otf);
+}
+
+@font-face {
+    font-family: CreatoDisplay-RegularItalic;
+    src: url(../fonts/CreatoDisplay-RegularItalic.otf);
+}
+
+@font-face {
+    font-family: CreatoDisplay-Thin;
+    src: url(../fonts/CreatoDisplay-Thin.otf);
+}
+
+@font-face {
+    font-family: CreatoDisplay-ThinItalic;
+    src: url(../fonts/CreatoDisplay-ThinItalic.otf);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Rubik';
+}
+
+
+/*
+*
+* ==========================================
+* @ component start
+* ==========================================
+*
+*/
+
+.btn-hero-mj {
+    background: #806DE1;
+    box-shadow: 0px 7px 14px rgba(128, 109, 225, 0.28);
+    border-radius: 10px;
+    padding: 12px 25px;
+    margin-top: 40px;
+    width: fit-content;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.my-btn-mj {
+    border: 1px solid #806DE1;
+    border-radius: 10px;
+    padding: 7px 20px;
+    color: #2B2B2B;
+    text-align: center;
+    font-family: 'Rubik';
+    font-weight: 500;
+    font-size: 15px;
+    transition: ease-in-out 0.3s;
+}
+
+section {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.main-section-heading .title-my {
+    font-family: CreatoDisplay-Bold;
+    font-size: 35px;
+    color: #806DE1;
+}
+
+.main-section-heading .subtitle-my {
+    font-family: Rubik;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+@media (max-width: 767.98px) {
+    .main-section-heading .title-my {
+        font-size: 30px;
+    }
+}
+
+
+/*
+*
+* ==========================================
+* @ component end
+* ==========================================
+*
+*/
+
+
+/*
+*
+* ==========================================
+* @ navbar estartnd
+* ==========================================
+*
+*/
+
+.navbar {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 999;
+    background-color: white;
+}
+
+.navbar-collapse.show {
+    background: rgb(255, 255, 255);
+    margin: -68px -35px;
+    padding: 77px 46px 21px;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 3px 34px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(34px);
+}
+
+.my-toggler:focus {
+    box-shadow: none;
+}
+
+.my-toggler {
+    border: none;
+}
+
+.navbar-my-mj li {
+    margin-right: 10px;
+}
+
+.navbar-my-mj li a {
+    font-size: 16px;
+    color: #444444;
+}
+
+.navbar-my-mj li .nav-link.active {
+    color: #806DE1;
+    font-weight: 500;
+    /* transition: ease-in-out 0.6s; */
+}
+
+.navbar-my-mj li .nav-link:hover {
+    color: #806DE1;
+    transition: ease-in-out 0.3s;
+}
+
+.my-btn-mj:hover {
+    background-color: #806DE1;
+    color: #fff;
+    transform: scale(0.9);
+    transition: ease-in-out 0.3s;
+}
+
+
+/*
+*
+* ==========================================
+* @ navbar end
+* ==========================================
+*
+*/
+
+
+/*
+*
+* ==========================================
+* @hero section start
+* ==========================================
+*
+*/
+
+.hero-section {
+    background-image: url(../img/bg-1.png );
+    /* background: linear-gradient(90deg, #E9E6FF 0%, #F5FFFE 26.81%, #F8F3FF 54.58%, #EEE6FF 99.86%); */
+    /* margin-top: -76px; */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 490px;
+    padding-top: 370px;
+
+}
+
+.hero-section .title-main-hero {
+    font-family: CreatoDisplay-Bold;
+    font-size: 68px;
+    letter-spacing: 0.01em;
+    color: #2B2B2B;
+    margin-bottom: 25px;
+}
+
+.hero-section .title-main-hero span {
+    color: #806DE1;
+}
+
+.hero-section .subtitle-hero {
+    font-size: 20px;
+    font-weight: 400;
+    color: #4F4F4F;
+}
+
+.btn-hero-mj:hover {
+    background-color: white;
+    color: #806DE1;
+}
+
+/*
+*
+* ==========================================
+* @hero section end
+* ==========================================
+*
+*/
+
+
+/*
+*
+* ==========================================
+* @MEDIA  start
+* ==========================================
+*
+*/
+
+@media (max-width: 1440.98px) {
+    .hero-section .title-main-hero {
+        font-size: 58px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 1208.98px) {
+    .hero-section .title-main-hero {
+        font-size: 55px;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* @media (max-width: 1199.98px) {
+    .hero-section .title-main-hero {
+        font-size: 55px;
+        margin-bottom: 20px;
+    }
+} */
+
+@media (max-width: 991.98px) {
+    .hero-section .title-main-hero {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    .hero-section .subtitle-hero {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-section {
+        height: unset;
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    .hero-section .title-main-hero {
+        font-size: 45px;
+        margin-bottom: 20px;
+    }
+
+    .hero-section .btn-hero-mj {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 465.98px) {
+    .hero-section .title-main-hero {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .hero-section .btn-hero-mj {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 375.98px) {
+    .hero-section .subtitle-hero {
+        font-size: 16px;
+    }
+}
+
+
+/*
+*
+* ==========================================
+* @MEDIA  end 
+* ==========================================
+*
+*/
+
+
+/* our client */
+
+.our-clients .oc-img {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    gap: 70px;
+}
+
+.our-clients .main-section-heading .line-1 {
+    position: absolute;
+    width: 192px;
+    height: 50px;
+    margin-top: 0%;
+    bottom: 30px;
+}
+.main-section-heading{
+    position: relative;
+}
+@media (max-width: 767.98px) {
+    .our-clients .title-my {
+        text-align: center;
+    }
+
+    .our-clients .subtitle-my {
+        text-align: center;
+    }
+
+    .our-clients .oc-img {
+        justify-content: space-evenly;
+    }
+}
+
+
+/* our clients end */
+
+
+/* about start */
+
+.about-section .about-content {
+    font-family: Rubik;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #666666;
+}
+
+@media (max-width: 767.98px) {
+    .about-section .title-my {
+        /* font-size: ; */
+    }
+
+    .about-section .about-content {
+        font-size: 16px;
+        line-height: 25px;
+        color: #666666;
+    }
+}
+
+
+/* about end */
+
+
+/* bgs */
+
+.bgs {
+    background: #F9F8FD;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.bgs .card-my {
+    background: #FFFFFF;
+    border-bottom: 2px solid #806DE1;
+    box-shadow: 0px 6px 31px rgba(0, 0, 0, 0.06);
+    border-radius: 25px;
+    font-family: Rubik;
+    padding: 20px 20px;
+}
+
+.bgs .card-my .card-title-my {
+    font-weight: 500;
+    font-size: 20px;
+    color: #4F4F4F;
+    margin-bottom: 15px;
+}
+
+.bgs .card-my .card-text-my {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #666666;
+}
+
+@media (max-width: 575.98px) {
+    .bgs .card-my {
+        width: 18.8rem;
+    }
+}
+
+
+/*  */
+
+.hdr-mj .card-hdr {
+    background: #FFFFFF;
+    border-width: 0px 1px 1px 0px;
+    border-style: solid;
+    border-color: rgba(128, 109, 225, 0.3);
+    box-shadow: 0px 5px 24px rgba(0, 0, 0, 0.04);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 35px;
+    /* margin: 0 15px; */
+}
+
+.hdr-mj .card-hdr img {
+    width: 80px;
+    height: 80px;
+}
+
+.hdr-mj .card-hdr .title-my {
+    font-weight: 500;
+    font-size: 18px;
+    color: #4F4F4F;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.hdr-mj .card-hdr .dec {
+    font-weight: 400;
+    font-size: 14px;
+    color: #666666;
+}
+
+@media (max-width: 575.98px) {
+    .hdr-mj .card-hdr {
+        width: 18.8rem;
+    }
+}
+
+.subtitle-my.color {
+    color: #999999;
+    max-width: 881px
+}
+
+
+/* .clip {
+    height: 250px;
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+    border-radius: 50px;
+    border: 1px solid springgreen;
+    object-fit: fill;
+} */
+
+.ourproduct-mj .optitle {
+    font-family: CreatoDisplay-Bold;
+    font-size: 30px;
+    color: #2B2B2B;
+    margin-bottom: 20px;
+}
+
+.ourproduct-mj .opdec {
+    font-weight: 400;
+    font-size: 17px;
+    color: #666666;
+}
+
+.ourproduct-mj .btn-style-my-op {
+    background: transparent;
+    font-size: 18px;
+    color: #806DE1;
+    /* box-shadow: 0px 7px 14px rgba(128, 109, 225, 0.28); */
+    border: 1px solid #806DE1;
+    filter: drop-shadow(0px 7px 14px rgba(128, 109, 225, 0.28));
+    border-radius: 10px;
+}
+
+@media (max-width: 767.98px) {
+    .ourproduct-mj .optitle {
+        font-size: 25px;
+    }
+}
+
+.busines-consultation .main-section-heading .title-my {
+    color: #2B2B2B;
+}
+
+.busines-consultation .main-section-heading .title-my span {
+    color: #806DE1;
+}
+
+.busines-consultation .detail-buscon .dec {
+    font-weight: 400;
+    font-size: 16px;
+    color: #666666;
+}
+
+.busines-consultation .bg-my-mj-c {
+    background-image: url('../img/Group\ 13026.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top right;
+    padding-top: 86px;
+    padding-bottom: 86px;
+}
+
+@media (max-width: 1399.98px) {
+    .busines-consultation .bg-my-mj-c {
+        background-image: unset;
+    }
+
+    .busines-consultation {
+        background-image: url('../img/Group\ 13026.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top center;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .busines-consultation {
+        background-position: top right;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .busines-consultation {
+        background-position: top center;
+    }
+}
+
+/* footer */
+
+.footer-my-mj {
+    background: linear-gradient(90deg, #E9E6FF 0%, #F5FFFE 26.81%, #F8F3FF 54.58%, #EEE6FF 99.86%);
+    padding-top: 80px;
+    padding-bottom: 30px;
+}
+
+.footer-my-mj .foologo {
+    margin-bottom: 25px;
+}
+
+.footer-my-mj .foo-dec {
+    font-weight: 400;
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+.footer-my-mj .foo-social {
+    height: 25px;
+}
+
+.footer-my-mj .foo-menu .title-foo {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 15px;
+    color: #121828;
+}
+
+.footer-my-mj .foo-menu .menuitem {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #555555;
+}
+
+.footer-my-mj .hr-foo {
+    background-color: #BCBAD2;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 30px;
+}
+
+.footer-my-mj .fo-copy {
+    font-weight: 500;
+    font-size: 16px;
+    color: #555555;
+}
+
+.footer-my-mj .gofoo-top a {
+    font-weight: 500;
+    font-size: 18px;
+    color: #555555;
+    text-decoration: none;
+}
