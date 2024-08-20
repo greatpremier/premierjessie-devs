@@ -25,6 +25,7 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/styles.css" rel="stylesheet">
 </head>
 <body>
     
@@ -68,6 +69,31 @@
     
         </div>
       </header>
+
+      <!--Order Section-->
+      <section class="order">
+        <p id="order-instructions">In order to get a quote or what you want fill in the form below</p>
+        <form class="order-form" name="order">
+          <h5>Choose your plan:</h5>
+            <select name="packages" id="form" onclick="Select()" required>
+              <option value="basic">Basic</option>
+              <option value="business">Business</option>
+              <option value="pro">Business Pro</option>
+              <option value="medics">Medics</option>
+            </select><br>
+            <input type="text" name="name" placeholder="Enter your name" id="form" required><br>
+            <input type="text" name="surname" placeholder="Enter your last name" id="form" required><br>
+            <input type="email" name="email" placeholder="Enter your business email" id="form" required><br>
+            <input type="text" name="company" placeholder="Enter your company" id="form" required><br>
+            <input type="tel" placeholder="Enter your contact number" id="form" required><br>
+            <h4>Additional Services:</h4>
+            <h5>Additional Blogposts:</h5><input type="number" id="add" name="blogs" min="1" max="3" disabled><br>
+            <h5>Appointment scheduling systems:</h5><input type="checkbox" name="appoint" disabled><br>
+            <h5>E-Books:</h5><input type="number" min="1" max="3" name="ebook" disabled><br>
+            <h5>Virtual consultation system:</h5><input type="checkbox" name="virtual" disabled><br>
+        </form>
+        <h2 id="display">Hi</h2>
+        <input type="button" onclick="Select()">
 
     <footer id="footer" class="footer position-relative light-background">
 
@@ -154,5 +180,6 @@
     
       <!-- Main JS File -->
       <script src="assets/js/main.js"></script>
+      <script src="assets/js/index.js"></script>
 </body>
 </html>
