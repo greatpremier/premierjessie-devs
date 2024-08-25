@@ -47,14 +47,8 @@
     text-align: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 400px) {
     .selection {
-        position: absolute;
-        list-style-type: none;
-        display: flex;
-        flex: auto;
-        gap: 10px;
-        padding: 1px 50px;
-        text-align: center;
+        padding: 1px 70px;
     }
 }
