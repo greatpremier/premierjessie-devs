@@ -46,3 +46,27 @@
     margin-top: 50px;
     text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+    #order-instructions {
+        font-size: 30px;
+        font-weight: 400;
+        padding: 10px 50px;
+    }
+    
+    .order {
+        margin-top: 100px;
+    }
+    
+    .order-form {
+        position: relative;
+        left: 20%;
+    }
+    
+    #form {
+        margin: 5px;
+        width: 300px;
+        border-radius: 10px;
+        padding: 3px 6px;
+    }
+}
