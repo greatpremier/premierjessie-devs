@@ -51,4 +51,8 @@
     .selection {
         padding: 1px 70px;
     }
+    .order-form {
+        position: relative;
+        left: 10%;
+    }
 }
