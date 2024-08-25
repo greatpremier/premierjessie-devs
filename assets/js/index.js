@@ -1,5 +1,4 @@
-const select = document.getElementById('form');
-const display = document.getElementById('display');
+const select = document.getElementById('form')
 const additional = document.getElementById('add')
 
 function Select(){
