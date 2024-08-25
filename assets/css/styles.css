@@ -27,3 +27,22 @@
 #form:hover {
     border-color: var(--accent-color);
 }
+
+.selection {
+    position: absolute;
+    list-style-type: none;
+    display: flex;
+    flex: auto;
+    gap: 10px;
+    padding: 1px 550px;
+    text-align: center;
+}
+
+#pricing {
+    z-index: 100;
+}
+
+.services-page {
+    margin-top: 50px;
+    text-align: center;
+}
