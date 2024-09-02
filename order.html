@@ -75,12 +75,21 @@
         <p id="order-instructions">In order to get a quote or what you want fill in the form below</p>
         <form class="order-form" name="order">
           <h5>Choose your plan:</h5>
+
+          <select name="services" id="form" onclick="Select()" required>
+            <option value="website">Website</option>
+            <option value="ecommerce">E-commerce</option>
+            <option value="ads">Ads</option>
+            <option value="seo">SEO</option>
+          </select>Choose service<br>
+
             <select name="packages" id="form" onclick="Select()" required>
               <option value="basic">Basic</option>
               <option value="business">Business</option>
               <option value="pro">Business Pro</option>
               <option value="medics">Medics</option>
-            </select><br>
+            </select>Choose package<br>
+
             <input type="text" name="name" placeholder="Enter your name" id="form" required><br>
             <input type="text" name="surname" placeholder="Enter your last name" id="form" required><br>
             <input type="email" name="email" placeholder="Enter your business email" id="form" required><br>
@@ -100,8 +109,6 @@
             <br>
             <h5>Virtual consultation system:</h5><input type="checkbox" name="virtual" id="add" required disabled><br>
         </form>
-
-        <input type="button" onclick="Select()">
 
         <footer id="footer" class="footer position-relative light-background">
 
