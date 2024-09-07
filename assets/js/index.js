@@ -1,20 +1,38 @@
-const select = document.getElementById('form')
-const additional = document.getElementById('add')
+/*document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-function Select(){
-    if(select.value === "business" || select.value === "pro" || select.value === "medics"){
-        additional.disabled = false;
-    }else{
-        additional.disabled = true;
+    // Example of additional JavaScript functionality
+    // Form validation or dynamic content can be added here
+
+document.querySelector('.order-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Form submitted successfully!');
+    // Add code here to handle form submission, e.g., AJAX request
+});*/
+
+const selectPackage = document.getElementById('package');
+const additionalCheckboxes = document.querySelectorAll('.order-form input[type="checkbox"]');
+
+function enableAdditionalServices() {
+    if (selectPackage.value === "business" || selectPackage.value ===
+        "pro" || selectPackage.value === "medics") {
+        additionalCheckboxes.forEach(checkbox => {
+            checkbox.disabled = false;
+        });
+    } else {
+        additionalCheckboxes.forEach(checkbox => {
+            checkbox.disabled = true;
+        });
     }
 }
 
-$(document).ready(() => {
+selectPackage.addEventListener('change', enableAdditionalServices);
+
+/*$(document).ready(() => {
     $("#webdev").show();
-        $("#e-commerce").hide();
-        $("#ads").hide();
-        $("#seo").hide();
-})
+    $("#e-commerce").hide();
+    $("#ads").hide();
+    $("#seo").hide();
+});*/
 
 $(document).ready(function(){
     $("#webdev-button").click(function(){
@@ -44,4 +62,4 @@ $(document).ready(function(){
         $("#ads").hide();
         $("#seo").show();
     });
-})
+});

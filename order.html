@@ -71,45 +71,51 @@
   </header>
 
       <!--Order Section-->
-      <section class="order">
-        <p id="order-instructions">In order to get a quote or what you want fill in the form below</p>
-        <form class="order-form" name="order">
-          <h5>Choose your plan:</h5>
-
-          <select name="services" id="form" onclick="Select()" required>
-            <option value="website">Website</option>
-            <option value="ecommerce">E-commerce</option>
-            <option value="ads">Ads</option>
-            <option value="seo">SEO</option>
-          </select>Choose service<br>
-
-            <select name="packages" id="form" onclick="Select()" required>
-              <option value="basic">Basic</option>
-              <option value="business">Business</option>
-              <option value="pro">Business Pro</option>
-              <option value="medics">Medics</option>
-            </select>Choose package<br>
-
-            <input type="text" name="name" placeholder="Enter your name" id="form" required><br>
-            <input type="text" name="surname" placeholder="Enter your last name" id="form" required><br>
-            <input type="email" name="email" placeholder="Enter your business email" id="form" required><br>
-            <input type="text" name="company" placeholder="Enter your company" id="form" required><br>
-            <input type="tel" placeholder="Enter your contact number" id="form" required><br>
-            <h4>Additional Services:</h4>
-            <h5>Additional Blogposts:</h5>
-              1<input type="checkbox" name="add_blogs1" id="add" value="1" disabled required>
-              2<input type="checkbox" name="add_blogs2" id="add" value="2" disabled required>
-              3<input type="checkbox" name="add_blogs3" id="add" value="3" disabled required>
-            <br>
-            <h5>Appointment scheduling systems:</h5><input type="checkbox" name="appoint" id="add" disabled required><br>
-            <h5>E-Books:</h5>
-              1<input type="checkbox" name="add_books1" id="add" value="1" disabled required>
-              2<input type="checkbox" name="add_books2" id="add" value="2" disabled required>
-              3<input type="checkbox" name="add_books3" id="add" value="3" disabled required>
-            <br>
-            <h5>Virtual consultation system:</h5><input type="checkbox" name="virtual" id="add" required disabled><br>
-        </form>
-
+  <section class="order">
+    <p id="order-instructions">To get a quote or what you want, please fill in the form below</p>
+    <form class="order-form" name="order">
+      <h5>Choose your plan:</h5>
+      <label for="service">Choose service</label><br>
+      <select name="services" id="service" required>
+        <option value="website">Website</option>
+        <option value="ecommerce">E-commerce</option>
+        <option value="ads">Ads</option>
+        <option value="seo">SEO</option>
+      </select><br>
+  
+      <label for="package">Choose package</label><br>
+      <select name="packages" id="package" required>
+        <option value="basic">Basic</option>
+        <option value="business">Business</option>
+        <option value="pro">Business Pro</option>
+        <option value="medics">Medics</option>
+      </select><br>
+  
+      <input type="text" name="name" placeholder="Enter your name" required><br>
+      <input type="text" name="surname" placeholder="Enter your last name" required><br>
+      <input type="email" name="email" placeholder="Enter your business email" required><br>
+      <input type="text" name="company" placeholder="Enter your company" required><br>
+      <input type="tel" name="contact" placeholder="Enter your contact number" required><br>
+  
+      <h4>Additional Services:</h4>
+      <h5>Additional Blogposts:</h5>
+      <label>1</label><input type="checkbox" name="add_blogs1" value="1" disabled>
+      <label>2</label><input type="checkbox" name="add_blogs2" value="2" disabled>
+      <label>3</label><input type="checkbox" name="add_blogs3" value="3" disabled><br>
+  
+      <h5>Appointment scheduling systems:</h5>
+      <input type="checkbox" name="appoint" disabled><br>
+  
+      <h5>E-Books:</h5>
+      <label>1</label><input type="checkbox" name="add_books1" value="1" disabled>
+      <label>2</label><input type="checkbox" name="add_books2" value="2" disabled>
+      <label>3</label><input type="checkbox" name="add_books3" value="3" disabled><br>
+  
+      <h5>Virtual consultation system:</h5>
+      <input type="checkbox" name="virtual" disabled><br>
+    </form>
+  </section>
+  <!-- /Order Section -->
         <footer id="footer" class="footer position-relative light-background">
 
           <div class="container footer-top">
