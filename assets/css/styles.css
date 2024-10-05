@@ -143,10 +143,7 @@
         position: relative;
         left: 5%;
     }
-    * {
-        max-width: 100% ;
-        overflow-x: hidden;
-    }
+    * {}
     .reco-form {
         position: relative;
         left: 0%;
