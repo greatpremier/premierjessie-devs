@@ -38,11 +38,11 @@
   $contact->add_message( $_POST['message'], 'Message', 10);
 
   echo $contact->send();*/
-  $sender_email = $_POST["email"];
+  //$sender_email = $_POST["email"];
   ini_set('sendmail_from', $sender_email );
   $to = 'premierjessie99@gmail.com';
-  $subject = $_POST['subject'];
-  $message = $_POST['message'];
+  $subject = 'greetings sir';
+  $message = 'hi premier tanks, how are you doing';
   $header = "From: pittkayz@gmail.com \r\n";
 
   $result = mail($to, $subject, $message, $header);
