@@ -1,0 +1,159 @@
+:root {
+    --accent-color: #388da8;
+}
+
+#order-instructions {
+    font-size: 30px;
+    font-weight: 400;
+    padding: 10px 50px;
+}
+
+#form {
+    margin: 5px;
+    width: 300px;
+    border-radius: 10px;
+    padding: 3px 6px;
+}
+
+#form:hover {
+    border-color: var(--accent-color);
+}
+
+.selection {
+    position: absolute;
+    list-style-type: none;
+    display: flex;
+    flex: auto;
+    gap: 10px;
+    padding: 1px 600px;
+    text-align: center;
+}
+
+#pricing {
+    z-index: 100;
+}
+
+.services-page {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.order {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-form select,
+.order-form input[type="text"],
+.order-form input[type="email"],
+.order-form input[type="tel"],
+.order-form input[type="checkbox"] {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+}
+
+.order-form h4, .order-form h5 {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.order-form input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+#whatsicon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    position: fixed;
+    bottom: 70px;
+    right: 15px;
+    
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+  
+    /* Positioning */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Show above the element */
+    left: 50%;
+    margin-left: -100px; /* Center the tooltip */
+  
+    /* Fading in effect */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .tex {
+    padding: 100px 200px;
+  }
+
+  .reco-form {
+    position: relative;
+    left: 25%;
+    margin-top: 50px;
+  }
+
+  .descript {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 50px;
+    width: 500px;
+    position: relative;
+    left: 30%;
+    font-size: 20px;
+    background-color: #388da8;
+  }
+
+@media screen and (min-width:320px) and (max-width: 480px) {
+    .selection {
+        padding: 1px 70px;
+    }
+    .order-form {
+        position: relative;
+        left: 5%;
+    }
+    .reco-form {
+        position: relative;
+        left: 0%;
+        margin-top: 50px;
+        width: 100%;
+    }
+    
+    .descript {
+        width: 100%;
+        position: relative;
+        left: 0%;
+    }
+}
+
