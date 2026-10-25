@@ -1,0 +1,300 @@
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Strategy Session | PremierJessie Devs Sandton</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0F172A',
+                        },
+                        brandBlue: {
+                            500: '#3b82f6',
+                            600: '#2563EB',
+                            700: '#1d4ed8',
+                        },
+                        lightBlue: '#EFF6FF',
+                        lightBg: '#F8FAFC',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-brandBlue-600 flex items-center justify-center text-white font-extrabold text-xl shadow-md group-hover:bg-brandBlue-700 transition">
+                    P
+                </div>
+                <div>
+                    <span class="text-lg sm:text-xl font-extrabold text-navy-900 tracking-tight block">PREMIERJESSIE DEVS</span>
+                    <span class="text-xs text-slate-500 font-medium tracking-wide uppercase block -mt-1">Sandton, Johannesburg</span>
+                </div>
+            </a>
+
+            <!-- HQ Time & Back Link -->
+            <div class="flex items-center space-x-4 sm:space-x-6">
+                <!-- Live HQ Clock -->
+                <div class="hidden md:flex items-center space-x-2 bg-slate-100 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700">
+                    <i data-lucide="clock" class="w-3.5 h-3.5 text-brandBlue-600"></i>
+                    <span>Sandton HQ: <span id="hq-clock" class="text-navy-900 font-bold">10:54 AM</span> <span class="text-slate-400">SAST</span></span>
+                </div>
+
+                <!-- Back to Main Site -->
+                <a href="#" class="inline-flex items-center space-x-1.5 text-sm font-semibold text-slate-600 hover:text-brandBlue-600 transition">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    <span class="hidden sm:inline">Main Website</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN HERO & FORM SECTION -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            
+            <!-- LEFT COLUMN: Value Proposition & Video Audience Intro -->
+            <div class="lg:col-span-5 space-y-8">
+                
+                <!-- Tag Badge -->
+                <div class="inline-flex items-center space-x-2 px-3 py-1.5 bg-lightBlue rounded-full text-brandBlue-600 text-xs font-bold uppercase tracking-wider">
+                    <i data-lucide="video" class="w-3.5 h-3.5"></i>
+                    <span>Exclusive Video Follow-up Session</span>
+                </div>
+
+                <!-- Main Heading -->
+                <div class="space-y-4">
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 leading-tight">
+                        Book Your Free 1-on-1 Growth Strategy Session
+                    </h1>
+                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                        Ready to accelerate revenue, scale your digital systems, or optimize conversion funnels? Claim your complimentary 30-minute deep dive with our Sandton strategy team.
+                    </p>
+                </div>
+
+                <!-- Key Benefits -->
+                <div class="space-y-4 pt-2">
+                    
+                    <div class="flex items-start space-x-3 p-4 bg-white rounded-2xl border border-slate-200/80 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-lightBlue flex items-center justify-center shrink-0 text-brandBlue-600">
+                            <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-navy-900 text-base">100% Free 30-Min Audit</h3>
+                            <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Comprehensive review of your current web performance, marketing stack, and growth bottlenecks.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3 p-4 bg-white rounded-2xl border border-slate-200/80 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-lightBlue flex items-center justify-center shrink-0 text-brandBlue-600">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-navy-900 text-base">Sandton Senior Partner Call</h3>
+                            <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Direct 1-on-1 discussion with a experienced Johannesburg growth strategist—no junior sales reps.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3 p-4 bg-white rounded-2xl border border-slate-200/80 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-lightBlue flex items-center justify-center shrink-0 text-brandBlue-600">
+                            <i data-lucide="file-text" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-navy-900 text-base">Actionable Action Plan</h3>
+                            <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Receive a tailored digital roadmap with immediate steps for measurable ROI after the call.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Trust Badge -->
+                <div class="p-4 rounded-xl bg-slate-100 border border-slate-200 flex items-center space-x-3">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-emerald-600 shrink-0"></i>
+                    <p class="text-xs text-slate-600 leading-snug">
+                        <span class="font-bold text-navy-900">Zero Pressure Guarantee:</span> This session is 100% educational. If we aren't the right fit, you keep the strategic roadmap with our compliments.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Google Form Dedicated Container -->
+            <div class="lg:col-span-7 space-y-6">
+                
+                <!-- Main Form Card Container -->
+                <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+                    
+                    <!-- Form Header Bar -->
+                    <div class="bg-navy-900 text-white p-6 sm:p-8 border-b border-navy-800 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-brandBlue-500 uppercase tracking-widest block mb-1">Step 1 of 2</span>
+                            <h2 class="text-xl sm:text-2xl font-bold">Strategy Request Details</h2>
+                            <p class="text-xs sm:text-sm text-slate-300 mt-1">Please provide your details below so we can prepare your audit.</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 text-brandBlue-500">
+                            <i data-lucide="calendar-check" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+
+                    <!-- Embed Iframe Container -->
+                    <div class="p-4 sm:p-8 bg-slate-50/50">
+                        
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf57X_fqTRn9_MPRHWIT3QtcQfMOW1sDxs0z6cFX8UIP3hTlA/viewform?embedded=true" width="640" height="1263" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe><!DOCTYPE html>
+
+                    </div>
+                </div>
+
+                <!-- TOGGLE / HELPER BOX: How to Replace with Live Form -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between cursor-pointer" onclick="toggleEmbedGuide()">
+                        <div class="flex items-center space-x-2 text-navy-900 font-bold text-sm">
+                            <i data-lucide="code" class="w-4 h-4 text-brandBlue-600"></i>
+                            <span>Developer Note: How to replace with your live Google Form</span>
+                        </div>
+                        <i id="guide-chevron" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                    </div>
+
+                    <div id="embed-guide" class="hidden text-xs text-slate-600 space-y-2 pt-2 border-t border-slate-100">
+                        <p>To integrate your exact live Google Form into this container:</p>
+                        <ol class="list-decimal pl-4 space-y-1 text-slate-600">
+                            <li>Open your Google Form &gt; Click <strong>Send</strong>.</li>
+                            <li>Select the <strong>Embed HTML (&lt;&gt;)</strong> tab.</li>
+                            <li>Copy the `&lt;iframe src="..." width="..." height="..."&gt;&lt;/iframe&gt;` link.</li>
+                            <li>Paste it into the embed container inside `book_strategy_session_simple.html`.</li>
+                        </ol>
+                        <div class="bg-slate-900 text-slate-200 p-2.5 rounded-lg font-mono text-[11px] overflow-x-auto">
+                            &lt;iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" width="100%" height="650" frameborder="0"&gt;Loading…&lt;/iframe&gt;
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- EXPANDABLE GUIDE: Enter Key & Automatic Row Saving -->
+                <div class="bg-lightBlue/60 rounded-2xl border border-brandBlue-500/20 p-5 space-y-3">
+                    <div class="flex items-center justify-between cursor-pointer" onclick="toggleAutoSaveGuide()">
+                        <div class="flex items-center space-x-2 text-navy-900 font-bold text-sm">
+                            <i data-lucide="database" class="w-4 h-4 text-brandBlue-600"></i>
+                            <span>How responses are auto-saved to Google Sheets</span>
+                        </div>
+                        <i id="autosave-chevron" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                    </div>
+
+                    <div id="autosave-guide" class="hidden text-xs text-slate-600 space-y-2 pt-2 border-t border-brandBlue-500/10">
+                        <p class="leading-relaxed">
+                            Google Forms features built-in instant synchronization with Google Sheets:
+                        </p>
+                        <ul class="list-disc pl-4 space-y-1.5 text-slate-600">
+                            <li><strong>Enter Key Submission:</strong> Pressing <kbd class="px-1.5 py-0.5 bg-white border border-slate-300 rounded font-mono text-[10px] text-slate-700">Enter</kbd> in any required text field will automatically trigger the submit function once all fields are complete.</li>
+                            <li><strong>Instant Row Appending:</strong> Every submission immediately creates a new timestamped row in your linked Google Sheet.</li>
+                            <li><strong>Real-time Notifications:</strong> You can enable email alerts under Google Forms &gt; <em>Responses</em> &gt; <em>Get email notifications for new responses</em>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-900 text-white border-t border-slate-800 mt-16 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg bg-brandBlue-600 flex items-center justify-center font-bold text-sm">P</div>
+                <span class="font-bold text-sm tracking-wide">PREMIERJESSIE DEVS</span>
+                <span class="text-xs text-slate-400">| Sandton Growth Agency</span>
+            </div>
+
+            <div class="text-xs text-slate-400 text-center md:text-right space-y-1">
+                <p>Sandton Office: 138 West St, Sandown, Sandton, 2196, Johannesburg, SA</p>
+                <p>&copy; 2026 PremierJessie Devs. All rights reserved. Operating on SAST (UTC+2).</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- SCRIPT FOR DYNAMIC CLOCK & INTERACTIVES -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Live SAST Sandton Clock
+        function updateClock() {
+            const now = new Date();
+            const options = { 
+                timeZone: 'Africa/Johannesburg', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                hour12: true 
+            };
+            const timeString = now.toLocaleTimeString('en-US', options);
+            const clockEl = document.getElementById('hq-clock');
+            if (clockEl) {
+                clockEl.textContent = timeString;
+            }
+        }
+        updateClock();
+        setInterval(updateClock, 30000);
+
+        // Toggle Developer Helper Guide
+        function toggleEmbedGuide() {
+            const guide = document.getElementById('embed-guide');
+            const chevron = document.getElementById('guide-chevron');
+            if (guide.classList.contains('hidden')) {
+                guide.classList.remove('hidden');
+                chevron.style.transform = 'rotate(180deg)';
+            } else {
+                guide.classList.add('hidden');
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Toggle Auto-Save Guide
+        function toggleAutoSaveGuide() {
+            const guide = document.getElementById('autosave-guide');
+            const chevron = document.getElementById('autosave-chevron');
+            if (guide.classList.contains('hidden')) {
+                guide.classList.remove('hidden');
+                chevron.style.transform = 'rotate(180deg)';
+            } else {
+                guide.classList.add('hidden');
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
