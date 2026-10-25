@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PremierJessie Devs | Enterprise Growth Agency Johannesburg</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Chart.js for ROI Simulator -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#080C14',
+                            surface: '#0F172A',
+                            card: '#162032',
+                            teal: '#00F0FF',
+                            gold: '#FFB800',
+                            sapphire: '#0A2540',
+                            text: '#E2E8F0',
+                            muted: '#94A3B8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                        'marquee': 'marquee 25s linear infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 15px rgba(0, 240, 255, 0.2)' },
+                            '100%': { boxShadow: '0 0 30px rgba(0, 240, 255, 0.6)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #080C14;
+            color: #E2E8F0;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Ambient glowing grid background */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080C14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F0FF;
+        }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(22, 32, 50, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 240, 255, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.15);
+        }
+
+        /* Text gradient effect */
+        .text-gradient {
+            background: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 50%, #00F0FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #FFF 0%, #FFB800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Interactive Spotlight Canvas Overlay */
+        #spotlight {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(0, 240, 255, 0.05), transparent 40%);
+        }
+    </style>
+</head>
+<body class="relative antialiased selection:bg-brand-teal selection:text-black">
+
+    <!-- Interactive Cursor Spotlight -->
+    <div id="spotlight"></div>
+
+    <!-- Canvas Node Network Background -->
+    <canvas id="hero-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Main Wrapper -->
+    <div class="relative z-10 flex flex-col min-h-screen bg-grid-pattern">
+
+        <!-- Navigation Bar -->
+        <header class="sticky top-0 z-50 glass-panel border-b border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-teal to-blue-600 flex items-center justify-center font-heading font-extrabold text-black text-xl shadow-lg shadow-brand-teal/20 group-hover:scale-105 transition-transform">
+                        PJ
+                    </div>
+                    <div>
+                        <span class="font-heading font-extrabold text-xl tracking-tight text-white block">PremierJessie <span class="text-brand-teal">Devs</span></span>
+                        <div class="flex items-center gap-1.5 text-[10px] font-semibold text-brand-muted tracking-wider uppercase">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                            HQ: Johannesburg, SA
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                    <a href="#services" class="hover:text-brand-teal transition-colors">Services</a>
+                    <a href="#calculator" class="hover:text-brand-teal transition-colors">ROI Simulator</a>
+                    <a href="#pipeline" class="hover:text-brand-teal transition-colors">Growth Engine</a>
+                    <a href="#cases" class="hover:text-brand-teal transition-colors">Impact & Work</a>
+                    <a href="#contact" class="hover:text-brand-teal transition-colors">Contact</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="hidden sm:flex items-center gap-4">
+                    <a href="#calculator" class="px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider text-brand-teal border border-brand-teal/30 hover:bg-brand-teal/10 transition-all">
+                        Simulate Growth
+                    </a>
+                    <a href="#contact" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-semibold rounded-lg group bg-gradient-to-br from-brand-teal to-blue-600 group-hover:from-brand-teal group-hover:to-blue-500 text-slate-900 hover:text-white transition-all shadow-lg shadow-brand-teal/20">
+                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-slate-950 text-white rounded-[7px] group-hover:bg-opacity-0">
+                            Audit My Brand <i class="fa-solid fa-arrow-right ml-1.5 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white p-2 text-xl" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
+                <a href="#services" class="block py-2 text-slate-300 hover:text-brand-teal font-medium">Services</a>
+                <a href="#calculator" class="block py-2 text-slate-300 hover:text-brand-teal font-medium">ROI Simulator</a>
+                <a href="#pipeline" class="block py-2 text-slate-300 hover:text-brand-teal font-medium">Growth Engine</a>
+                <a href="#cases" class="block py-2 text-slate-300 hover:text-brand-teal font-medium">Impact & Work</a>
+                <a href="#contact" class="block py-2 text-slate-300 hover:text-brand-teal font-medium">Contact</a>
+                <div class="pt-4 flex flex-col gap-3">
+                    <a href="#contact" class="w-full text-center py-3 bg-brand-teal text-slate-950 font-bold rounded-lg text-sm shadow-md">
+                        Audit My Brand
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="relative pt-12 lg:pt-20 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
+            
+            <!-- Location & Quality Tag -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel text-xs font-semibold text-brand-teal mb-8 border border-brand-teal/30 shadow-md">
+                <span class="w-2 h-2 rounded-full bg-brand-gold"></span>
+                Johannesburg's Premier Tech & Growth Partner
+                <span class="text-slate-500">|</span>
+                <span class="text-slate-300">Global Standards</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl leading-tight sm:leading-tight">
+                Accelerating Enterprise & Scale-Up Growth in <span class="text-gradient">Johannesburg & Beyond</span>
+            </h1>
+
+            <p class="mt-6 text-lg sm:text-xl text-brand-muted max-w-3xl font-normal leading-relaxed">
+                We bridge high-end engineering with ruthless acquisition marketing. Custom web architectures, AI data engineering, and conversion engines designed to scale revenue exponentially.
+            </p>
+
+            <!-- Dual CTA Buttons -->
+            <div class="mt-10 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-teal to-blue-500 text-slate-950 font-heading font-extrabold text-base shadow-xl shadow-brand-teal/25 hover:shadow-brand-teal/40 hover:scale-105 transition-all text-center">
+                    Scale Your Business <i class="fa-solid fa-rocket ml-2"></i>
+                </a>
+                <a href="#calculator" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card text-white font-heading font-semibold text-base hover:bg-slate-800/80 transition-all text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calculator text-brand-teal"></i> Calculate Projected ROI
+                </a>
+            </div>
+
+            <!-- Key Stats Bar -->
+            <div class="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 w-full">
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="font-heading text-3xl sm:text-4xl font-extrabold text-white counter" data-target="340">+0%</div>
+                    <div class="text-xs sm:text-sm text-brand-muted font-medium mt-1">Avg Revenue Growth</div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-teal counter" data-target="150">R0M+</div>
+                    <div class="text-xs sm:text-sm text-brand-muted font-medium mt-1">Client Revenue Generated</div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-gold counter" data-target="99.4">0%</div>
+                    <div class="text-xs sm:text-sm text-brand-muted font-medium mt-1">Client Retention Rate</div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="font-heading text-3xl sm:text-4xl font-extrabold text-white counter" data-target="45">+0</div>
+                    <div class="text-xs sm:text-sm text-brand-muted font-medium mt-1">Scale-Ups Accelerated</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLIENT MARQUEE TICKER -->
+        <div class="py-6 border-y border-white/5 bg-slate-950/40 overflow-hidden relative">
+            <div class="flex gap-12 whitespace-nowrap animate-marquee items-center text-slate-400 font-heading text-sm font-semibold uppercase tracking-widest">
+                <span><i class="fa-solid fa-shield-halved text-brand-teal mr-2"></i> Standard Bank Fintech Hub</span>
+                <span><i class="fa-solid fa-bolt text-brand-gold mr-2"></i> Sandton Enterprise Cloud</span>
+                <span><i class="fa-solid fa-gem text-blue-400 mr-2"></i> JHB Luxury Retail</span>
+                <span><i class="fa-solid fa-chart-line text-emerald-400 mr-2"></i> Cape & Rand SaaS Engine</span>
+                <span><i class="fa-solid fa-microchip text-brand-teal mr-2"></i> NextGen Logistics SA</span>
+                <span><i class="fa-solid fa-shield-halved text-brand-teal mr-2"></i> Standard Bank Fintech Hub</span>
+                <span><i class="fa-solid fa-bolt text-brand-gold mr-2"></i> Sandton Enterprise Cloud</span>
+                <span><i class="fa-solid fa-gem text-blue-400 mr-2"></i> JHB Luxury Retail</span>
+                <span><i class="fa-solid fa-chart-line text-emerald-400 mr-2"></i> Cape & Rand SaaS Engine</span>
+            </div>
+        </div>
+
+        <!-- SERVICES SECTION WITH FILTERABLE SHOWCASE -->
+        <section id="services" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-xs font-extrabold uppercase tracking-widest text-brand-teal mb-3">Architected For Scale</h2>
+                <h3 class="font-heading text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Enterprise Growth Services</h3>
+                <p class="mt-4 text-slate-400 text-base sm:text-lg">We combine custom web engineering with data science to unlock compounding revenue engines.</p>
+            </div>
+
+            <!-- Service Filter Tabs -->
+            <div class="mt-10 flex flex-wrap justify-center gap-2 sm:gap-4">
+                <button class="service-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-brand-teal text-slate-950" data-filter="all">All Ecosystems</button>
+                <button class="service-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all glass-panel text-slate-300 hover:text-white" data-filter="dev">Custom Web & Apps</button>
+                <button class="service-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all glass-panel text-slate-300 hover:text-white" data-filter="growth">Performance Acquisition</button>
+                <button class="service-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all glass-panel text-slate-300 hover:text-white" data-filter="analytics">Data Engineering</button>
+            </div>
+
+            <!-- 3D Interactive Cards Grid -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service Card 1 -->
+                <div class="service-card glass-card rounded-2xl p-8 relative overflow-hidden group tilt-card" data-category="dev">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-teal/10 border border-brand-teal/30 flex items-center justify-center text-brand-teal text-2xl mb-6 group-hover:bg-brand-teal group-hover:text-slate-950 transition-colors">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Custom Web/App Ecosystems</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Ultra-fast Next.js & React architectures engineered for maximum speed, security, and enterprise conversion performance.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-teal"></i> Headless CMS Architecture</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-teal"></i> Sub-Second Page Load Speeds</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-teal"></i> Payment Gateway Integrations</li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-xs font-extrabold text-brand-teal uppercase tracking-wider group-hover:translate-x-2 transition-transform">
+                        Explore Stack <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service-card glass-card rounded-2xl p-8 relative overflow-hidden group tilt-card" data-category="growth">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:bg-brand-gold group-hover:text-slate-950 transition-colors">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">High-Ticket Acquisition</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Data-driven Paid Search & Social campaign strategies targeting enterprise decision-makers across South Africa and worldwide.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> LinkedIn B2B Pipeline Engines</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> Google Search Intent Funnels</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> Retargeting & Lead Nurturing</li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-xs font-extrabold text-brand-gold uppercase tracking-wider group-hover:translate-x-2 transition-transform">
+                        Explore Growth <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service-card glass-card rounded-2xl p-8 relative overflow-hidden group tilt-card" data-category="growth">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl mb-6 group-hover:bg-blue-500 group-hover:text-slate-950 transition-colors">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Dominant SEO & Organic Search</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Dominate search engine results in Johannesburg, Sandton, and international target markets with technical SEO supremacy.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Local & Regional Geo-Targeting</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Programmatic Content Scaling</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> High-Authority Link Networks</li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-xs font-extrabold text-blue-400 uppercase tracking-wider group-hover:translate-x-2 transition-transform">
+                        Explore SEO <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="service-card glass-card rounded-2xl p-8 relative overflow-hidden group tilt-card" data-category="analytics">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl mb-6 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-colors">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">AI & Attribution Data Stack</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Complete data transparency. Multi-touch attribution models so you know every Rand spent translates to real revenue.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Server-Side API Tracking</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Real-time Executive Dashboards</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Predictive Customer LTV</li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-xs font-extrabold text-emerald-400 uppercase tracking-wider group-hover:translate-x-2 transition-transform">
+                        Explore Data <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="service-card glass-card rounded-2xl p-8 relative overflow-hidden group tilt-card" data-category="dev">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl mb-6 group-hover:bg-purple-500 group-hover:text-slate-950 transition-colors">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Conversion Rate Optimization (CRO)</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Turn existing traffic into paying clients with scientific A/B testing, UX heatmaps, and psychological trigger copy.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> User Behavior & Heatmaps</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Multivariate Landing Tests</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Frictionless Checkout Engineering</li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-xs font-extrabold text-purple-400 uppercase tracking-wider group-hover:translate-x-2 transition-transform">
+                        Explore CRO <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="service-card glass-card rounded-2xl p-8 relative overflow-hidden group tilt-card" data-category="growth">
+                    <div class="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-2xl mb-6 group-hover:bg-pink-500 group-hover:text-slate-950 transition-colors">
+                        <i class="fa-solid fa-arrows-spin"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Full Fractional Growth Team</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Access an entire dedicated team of Senior Engineers, Growth Strategists, and Copywriters for a fraction of in-house costs.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Weekly Growth Sprints</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Dedicated JHB Account Director</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> 100% Scalable Velocity</li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-xs font-extrabold text-pink-400 uppercase tracking-wider group-hover:translate-x-2 transition-transform">
+                        Explore Retainers <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INTERACTIVE ROI SIMULATOR CALCULATOR -->
+        <section id="calculator" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+            <div class="glass-panel rounded-3xl p-6 sm:p-12 border border-brand-teal/20 relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-teal/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Calculator Inputs -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div>
+                            <span class="text-xs font-extrabold uppercase tracking-widest text-brand-teal">Interactive Tool</span>
+                            <h3 class="font-heading text-3xl font-extrabold text-white mt-1">Growth ROI Simulator</h3>
+                            <p class="text-slate-400 text-sm mt-2">Adjust your current metrics to forecast scale potential with PremierJessie Devs stack.</p>
+                        </div>
+
+                        <!-- Range Slider 1: Monthly Ad Spend -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-300 font-medium">Monthly Marketing Budget</span>
+                                <span class="text-brand-teal font-extrabold" id="spend-val">R50,000</span>
+                            </div>
+                            <input type="range" id="input-spend" min="10000" max="500000" step="5000" value="50000" class="w-full accent-brand-teal h-2 bg-slate-800 rounded-lg cursor-pointer">
+                        </div>
+
+                        <!-- Range Slider 2: Average Deal Value -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-300 font-medium">Average Deal / Order Value</span>
+                                <span class="text-brand-gold font-extrabold" id="deal-val">R15,000</span>
+                            </div>
+                            <input type="range" id="input-deal" min="1000" max="100000" step="1000" value="15000" class="w-full accent-brand-gold h-2 bg-slate-800 rounded-lg cursor-pointer">
+                        </div>
+
+                        <!-- Range Slider 3: Target Conversion Boost -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-300 font-medium">Target Traffic Volume (Visitors/mo)</span>
+                                <span class="text-blue-400 font-extrabold" id="traffic-val">25,000</span>
+                            </div>
+                            <input type="range" id="input-traffic" min="5000" max="250000" step="5000" value="25000" class="w-full accent-blue-400 h-2 bg-slate-800 rounded-lg cursor-pointer">
+                        </div>
+
+                        <!-- Metrics Summary Box -->
+                        <div class="p-4 rounded-xl bg-slate-950/60 border border-white/5 grid grid-cols-2 gap-4">
+                            <div>
+                                <div class="text-[11px] text-slate-400 uppercase font-semibold">Projected Monthly Leads</div>
+                                <div class="text-xl font-extrabold text-white mt-1" id="projected-leads">125</div>
+                            </div>
+                            <div>
+                                <div class="text-[11px] text-slate-400 uppercase font-semibold">Estimated Net Revenue</div>
+                                <div class="text-xl font-extrabold text-brand-teal mt-1" id="projected-rev">R468,750</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Canvas Chart Display -->
+                    <div class="lg:col-span-7 bg-slate-950/80 p-6 rounded-2xl border border-white/10 flex flex-col justify-between h-full min-h-[340px]">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-sm font-bold text-slate-200">6-Month Projected Growth Curve</h4>
+                            <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 font-semibold border border-emerald-500/20">
+                                <i class="fa-solid fa-arrow-trend-up mr-1"></i> Optimised Projection
+                            </span>
+                        </div>
+                        <div class="relative w-full h-64">
+                            <canvas id="roiChart"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ANIMATED PROCESS PIPELINE FLOW -->
+        <section id="pipeline" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-extrabold uppercase tracking-widest text-brand-teal mb-3">Methodology</h2>
+                <h3 class="font-heading text-3xl sm:text-5xl font-extrabold text-white tracking-tight">The Growth Engine Pipeline</h3>
+                <p class="mt-4 text-slate-400 text-base">Continuous iteration to guarantee predictable enterprise scale.</p>
+            </div>
+
+            <!-- Pipeline SVG Connected Steps -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+                
+                <!-- Step 1 -->
+                <div class="glass-card p-6 rounded-2xl relative border-t-2 border-brand-teal">
+                    <div class="text-4xl font-extrabold font-heading text-brand-teal/20 mb-4">01</div>
+                    <h4 class="font-heading text-lg font-bold text-white mb-2">Audit & Architecture</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Deconstruct tech bottlenecks, conversion drop-offs, and competitor acquisition vectors in JHB market.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-card p-6 rounded-2xl relative border-t-2 border-brand-gold">
+                    <div class="text-4xl font-extrabold font-heading text-brand-gold/20 mb-4">02</div>
+                    <h4 class="font-heading text-lg font-bold text-white mb-2">Custom Dev Build</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Engineering ultra-performant React/Next.js landing pages and tracking servers built for speed.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-card p-6 rounded-2xl relative border-t-2 border-blue-400">
+                    <div class="text-4xl font-extrabold font-heading text-blue-400/20 mb-4">03</div>
+                    <h4 class="font-heading text-lg font-bold text-white mb-2">Multi-Channel Launch</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Deploying targeted omni-channel acquisition paid ads and high-ranking SEO strategies.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="glass-card p-6 rounded-2xl relative border-t-2 border-emerald-400">
+                    <div class="text-4xl font-extrabold font-heading text-emerald-400/20 mb-4">04</div>
+                    <h4 class="font-heading text-lg font-bold text-white mb-2">CRO & Scale Sprints</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Relentless continuous optimization, A/B testing, and doubling down on top-performing pipelines.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CASE STUDIES / IMPACT SECTION -->
+        <section id="cases" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <h2 class="text-xs font-extrabold uppercase tracking-widest text-brand-teal mb-3">Proven Results</h2>
+                    <h3 class="font-heading text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Johannesburg Impact Case Studies</h3>
+                </div>
+                <a href="#contact" class="mt-4 md:mt-0 text-xs font-extrabold text-brand-teal uppercase tracking-wider hover:underline">
+                    View All Success Stories <i class="fa-solid fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Case Study 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-48 bg-slate-900 relative p-6 flex flex-col justify-between border-b border-white/5 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(15,23,42,0.6), rgba(15,23,42,0.95)), url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80');">
+                        <span class="self-start px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-brand-teal text-slate-950">Sandton Fintech</span>
+                        <div>
+                            <div class="text-2xl font-extrabold text-white font-heading">+410% ARR Growth</div>
+                            <div class="text-xs text-brand-muted">Scale-Up Payment Gateway</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-400 text-xs leading-relaxed mb-4">Re-architected core web app to React, implemented automated server attribution, and scaled Google Search campaigns.</p>
+                        <div class="flex items-center justify-between text-xs font-semibold text-slate-300 pt-4 border-t border-white/5">
+                            <span>Timeframe: 5 Months</span>
+                            <span class="text-brand-teal">Custom Next.js Stack</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-48 bg-slate-900 relative p-6 flex flex-col justify-between border-b border-white/5 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(15,23,42,0.6), rgba(15,23,42,0.95)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80');">
+                        <span class="self-start px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-brand-gold text-slate-950">Rosebank E-Commerce</span>
+                        <div>
+                            <div class="text-2xl font-extrabold text-white font-heading">R24M New Sales</div>
+                            <div class="text-xs text-brand-muted">Luxury Brand Apparel</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-400 text-xs leading-relaxed mb-4">CRO optimization boosted checkout conversion by 2.4x while scaling targeted high-ticket acquisition ads across Meta & Google.</p>
+                        <div class="flex items-center justify-between text-xs font-semibold text-slate-300 pt-4 border-t border-white/5">
+                            <span>Timeframe: 8 Months</span>
+                            <span class="text-brand-gold">Headless Commerce</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-48 bg-slate-900 relative p-6 flex flex-col justify-between border-b border-white/5 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(15,23,42,0.6), rgba(15,23,42,0.95)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80');">
+                        <span class="self-start px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-blue-500 text-slate-950">Commercial Real Estate</span>
+                        <div>
+                            <div class="text-2xl font-extrabold text-white font-heading">3.8x Qualified Leads</div>
+                            <div class="text-xs text-brand-muted">B2B Enterprise Portal</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-400 text-xs leading-relaxed mb-4">Complete SEO overhaul and LinkedIn account-based marketing campaign targeting institutional property investors.</p>
+                        <div class="flex items-center justify-between text-xs font-semibold text-slate-300 pt-4 border-t border-white/5">
+                            <span>Timeframe: 6 Months</span>
+                            <span class="text-blue-400">SEO & ABM Funnel</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT & AUDIT REQUEST SECTION -->
+        <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info Panel -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-teal">Direct Line</span>
+                        <h3 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mt-1">Let's Build Your Growth Engine</h3>
+                        <p class="text-slate-400 text-sm mt-3 leading-relaxed">Ready to scale your business with Johannesburg's top tech and growth engineering agency? Schedule your growth audit today.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="glass-card p-4 rounded-xl flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-teal/10 border border-brand-teal/30 flex items-center justify-center text-brand-teal">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-400">Johannesburg Headquarters</div>
+                                <div class="text-sm font-bold text-white">Sandton City Office Towers, JHB</div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-400">Direct Client Line</div>
+                                <div class="text-sm font-bold text-white">+27 (0) 11 593 2000</div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-400">Growth Inquiries</div>
+                                <div class="text-sm font-bold text-white">growth@premierjessiedevs.co.za</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dark Mode Styled Map Placeholder -->
+                    <div class="glass-card rounded-2xl h-48 overflow-hidden relative flex items-center justify-center border border-white/10">
+                        <div class="absolute inset-0 bg-slate-900 opacity-90"></div>
+                        <div class="relative z-10 text-center p-4">
+                            <i class="fa-solid fa-map-location-dot text-3xl text-brand-teal mb-2"></i>
+                            <div class="text-sm font-bold text-white">Sandton Central, Johannesburg</div>
+                            <div class="text-xs text-slate-400">Coordinates: 26.1076° S, 28.0567° E</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Form Panel -->
+                <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-10 border border-white/10">
+                    <form id="growth-form" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Full Name *</label>
+                                <input type="text" required placeholder="John Doe" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Work Email *</label>
+                                <input type="email" required placeholder="john@company.co.za" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Company Name</label>
+                                <input type="text" placeholder="Enterprise Ltd" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Monthly Budget Range</label>
+                                <select class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-slate-300 focus:outline-none focus:border-brand-teal transition-colors">
+                                    <option>R25,000 - R50,000 / pm</option>
+                                    <option>R50,000 - R150,000 / pm</option>
+                                    <option>R150,000+ / pm</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Growth Objectives & Requirements</label>
+                            <textarea rows="4" placeholder="Tell us about your current revenue goals, tech stack, or advertising challenges..." class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-teal via-blue-500 to-indigo-600 text-slate-950 font-heading font-extrabold text-base shadow-xl shadow-brand-teal/20 hover:scale-[1.01] transition-transform">
+                            Submit Audit Request <i class="fa-solid fa-paper-plane ml-2"></i>
+                        </button>
+
+                        <div id="form-message" class="hidden text-center text-sm font-semibold p-3 rounded-lg"></div>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="mt-auto border-t border-white/10 bg-slate-950/80 glass-panel">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-lg bg-brand-teal flex items-center justify-center font-heading font-extrabold text-black text-sm">PJ</div>
+                            <span class="font-heading font-extrabold text-lg text-white">PremierJessie <span class="text-brand-teal">Devs</span></span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">Enterprise web engineering & high-velocity digital acquisition agency headquartered in Sandton, Johannesburg.</p>
+                    </div>
+
+                    <div>
+                        <h5 class="text-xs font-extrabold uppercase text-slate-200 tracking-wider mb-4">Core Services</h5>
+                        <ul class="space-y-2 text-xs text-slate-400">
+                            <li><a href="#services" class="hover:text-brand-teal">Custom Next.js & React Dev</a></li>
+                            <li><a href="#services" class="hover:text-brand-teal">High-Ticket Customer Acquisition</a></li>
+                            <li><a href="#services" class="hover:text-brand-teal">Johannesburg SEO Supremacy</a></li>
+                            <li><a href="#services" class="hover:text-brand-teal">Conversion Rate Optimization</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h5 class="text-xs font-extrabold uppercase text-slate-200 tracking-wider mb-4">Company</h5>
+                        <ul class="space-y-2 text-xs text-slate-400">
+                            <li><a href="#pipeline" class="hover:text-brand-teal">Our Engine Process</a></li>
+                            <li><a href="#cases" class="hover:text-brand-teal">Impact & Case Studies</a></li>
+                            <li><a href="#calculator" class="hover:text-brand-teal">ROI Simulator Tool</a></li>
+                            <li><a href="#contact" class="hover:text-brand-teal">Schedule Audit</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Dynamic Johannesburg Time Clock Widget -->
+                    <div class="space-y-3">
+                        <h5 class="text-xs font-extrabold uppercase text-slate-200 tracking-wider">Johannesburg HQ Status</h5>
+                        <div class="glass-card p-3 rounded-xl border border-white/5">
+                            <div class="text-[10px] uppercase font-semibold text-slate-400">Local Time (JHB / SAST)</div>
+                            <div id="jhb-clock" class="text-lg font-mono font-bold text-brand-teal mt-0.5">00:00:00 SAST</div>
+                            <div class="flex items-center gap-1.5 text-[11px] text-emerald-400 font-semibold mt-1">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> HQ Operations Open
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                    <div>© <span id="year-span"></span> PremierJessie Devs (Pty) Ltd. All Rights Reserved.</div>
+                    <div class="flex gap-6">
+                        <a href="#" class="hover:text-slate-400">Privacy Policy</a>
+                        <a href="#" class="hover:text-slate-400">Terms of Service</a>
+                        <a href="#" class="hover:text-slate-400">POPIA Compliance</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- FLOATING CONSULTATION TRIGGER WIDGET -->
+        <div class="fixed bottom-6 right-6 z-50">
+            <button id="chat-widget-btn" class="w-14 h-14 rounded-full bg-gradient-to-r from-brand-teal to-blue-500 text-slate-950 font-bold text-xl flex items-center justify-center shadow-2xl shadow-brand-teal/40 hover:scale-110 transition-all animate-float">
+                <i class="fa-solid fa-comments"></i>
+            </button>
+            
+            <!-- Quick Consultation Popup -->
+            <div id="chat-popup" class="hidden absolute bottom-16 right-0 w-80 glass-panel rounded-2xl p-5 border border-brand-teal/30 shadow-2xl space-y-3">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                        <span class="text-xs font-bold text-white">JHB Growth Strategist</span>
+                    </div>
+                    <button id="chat-close-btn" class="text-slate-400 hover:text-white text-xs"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">Hi there! Looking to scale your user acquisition or modernize your tech platform in Johannesburg?</p>
+                <a href="#contact" class="block text-center py-2 bg-brand-teal text-slate-950 font-extrabold text-xs rounded-lg hover:bg-brand-teal/90 transition-colors">
+                    Request 15-Min Strategy Call
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT LOGIC & ANIMATIONS -->
+    <script>
+        // 1. DYNAMIC CANVAS BACKGROUND NODE NETWORK
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+        let mouse = { x: null, y: null, radius: 150 };
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+
+            // Interactive Spotlight CSS variable update
+            document.documentElement.style.setProperty('--x', `${e.clientX}px`);
+            document.documentElement.style.setProperty('--y', `${e.clientY}px`);
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = (Math.random() - 0.5) * 0.8;
+            }
+
+            draw() {
+                ctx.fillStyle = '#00F0FF';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
+                if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+
+                // Mouse interaction physics
+                if (mouse.x && mouse.y) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius) {
+                        let force = (mouse.radius - distance) / mouse.radius;
+                        this.x -= (dx / distance) * force * 3;
+                        this.y -= (dy / distance) * force * 3;
+                    }
+                }
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(Math.floor(window.innerWidth / 15), 90);
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+                    let dx = particles[a].x - particles[b].x;
+                    let dy = particles[a].y - particles[b].y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 120) {
+                        let opacity = 1 - (dist / 120);
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${opacity * 0.25})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            connectParticles();
+            requestAnimationFrame(animateCanvas);
+        }
+
+        // 2. LIVE ROI SIMULATOR CHART.JS INTEGRATION
+        let roiChartInstance = null;
+
+        function calculateROI() {
+            const spend = parseFloat(document.getElementById('input-spend').value);
+            const deal = parseFloat(document.getElementById('input-deal').value);
+            const traffic = parseFloat(document.getElementById('input-traffic').value);
+
+            // Update UI Labels
+            document.getElementById('spend-val').innerText = 'R' + spend.toLocaleString('en-ZA');
+            document.getElementById('deal-val').innerText = 'R' + deal.toLocaleString('en-ZA');
+            document.getElementById('traffic-val').innerText = traffic.toLocaleString('en-ZA');
+
+            // Business logic estimate: 2.5% conversion optimization rate
+            const projectedLeads = Math.round(traffic * 0.025);
+            const projectedRevenue = projectedLeads * (deal * 0.25); // estimated monthly closed conversion
+
+            document.getElementById('projected-leads').innerText = projectedLeads.toLocaleString('en-ZA');
+            document.getElementById('projected-rev').innerText = 'R' + Math.round(projectedRevenue).toLocaleString('en-ZA');
+
+            // Generate 6-month compounding data points
+            const chartData = [];
+            for (let month = 1; month <= 6; month++) {
+                const multiplier = 1 + (month * 0.22);
+                chartData.push(Math.round(projectedRevenue * multiplier));
+            }
+
+            updateChart(chartData);
+        }
+
+        function updateChart(dataPoints) {
+            const ctxChart = document.getElementById('roiChart').getContext('2d');
+
+            if (roiChartInstance) {
+                roiChartInstance.destroy();
+            }
+
+            roiChartInstance = new Chart(ctxChart, {
+                type: 'line',
+                data: {
+                    labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'],
+                    datasets: [{
+                        label: 'Projected Revenue Growth (ZAR)',
+                        data: dataPoints,
+                        borderColor: '#00F0FF',
+                        borderWidth: 3,
+                        backgroundColor: 'rgba(0, 240, 255, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#FFB800',
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#94A3B8' }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: {
+                                color: '#94A3B8',
+                                callback: function(value) { return 'R' + (value/1000) + 'k'; }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // 3. SERVICE FILTERABLE SHOWCASE
+        const filterBtns = document.querySelectorAll('.service-filter-btn');
+        const serviceCards = document.querySelectorAll('.service-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-brand-teal', 'text-slate-950');
+                    b.classList.add('glass-panel', 'text-slate-300');
+                });
+                btn.classList.add('bg-brand-teal', 'text-slate-950');
+                btn.classList.remove('glass-panel', 'text-slate-300');
+
+                const filter = btn.dataset.filter;
+                serviceCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 4. INTERACTIVE 3D TILT CARDS
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+
+        // 5. ANIMATED KEY STATS COUNTER
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                let count = 0;
+                const speed = target / 50;
+
+                const updateCount = () => {
+                    count += speed;
+                    if (count < target) {
+                        if (target % 1 !== 0) {
+                            counter.innerText = count.toFixed(1) + '%';
+                        } else {
+                            counter.innerText = '+' + Math.ceil(count) + '%';
+                        }
+                        setTimeout(updateCount, 30);
+                    } else {
+                        if (target === 150) counter.innerText = 'R150M+';
+                        else if (target === 99.4) counter.innerText = '99.4%';
+                        else if (target === 45) counter.innerText = '+45';
+                        else counter.innerText = '+' + target + '%';
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // 6. JOHANNESBURG LOCAL TIME CLOCK
+        function updateJHBClock() {
+            const options = {
+                timeZone: 'Africa/Johannesburg',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            const formatter = new Intl.DateTimeFormat([], options);
+            document.getElementById('jhb-clock').innerText = formatter.format(new Date()) + ' SAST';
+        }
+
+        // 7. FORM SUBMISSION HANDLER
+        document.getElementById('growth-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const msg = document.getElementById('form-message');
+            msg.classList.remove('hidden');
+            msg.classList.add('bg-emerald-500/20', 'text-emerald-400', 'border', 'border-emerald-500/30');
+            msg.innerText = '✓ Audit request submitted! A Sandton growth strategist will contact you within 2 hours.';
+            e.target.reset();
+        });
+
+        // 8. MOBILE MENU TOGGLE
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 9. FLOATING CHAT WIDGET TOGGLE
+        const chatBtn = document.getElementById('chat-widget-btn');
+        const chatPopup = document.getElementById('chat-popup');
+        const chatClose = document.getElementById('chat-close-btn');
+
+        chatBtn.addEventListener('click', () => chatPopup.classList.toggle('hidden'));
+        chatClose.addEventListener('click', () => chatPopup.classList.add('hidden'));
+
+        // INITIALIZATION ON WINDOW LOAD
+        window.onload = function() {
+            resizeCanvas();
+            initParticles();
+            animateCanvas();
+
+            calculateROI();
+            document.getElementById('input-spend').addEventListener('input', calculateROI);
+            document.getElementById('input-deal').addEventListener('input', calculateROI);
+            document.getElementById('input-traffic').addEventListener('input', calculateROI);
+
+            animateCounters();
+            updateJHBClock();
+            setInterval(updateJHBClock, 1000);
+
+            document.getElementById('year-span').innerText = new Date().getFullYear();
+        };
+    </script>
+</body>
+</html>
