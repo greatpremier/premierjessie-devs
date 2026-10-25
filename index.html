@@ -1,22 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PremierJessie Devs | Enterprise Growth Agency Johannesburg</title>
-
-    <!-- Google Fonts -->
+    <title>PremierJessie Devs | Enterprise Growth Agency Sandton, Johannesburg</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Chart.js for ROI Simulator -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
@@ -25,38 +21,46 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            dark: '#080C14',
-                            surface: '#0F172A',
-                            card: '#162032',
-                            teal: '#00F0FF',
-                            gold: '#FFB800',
-                            sapphire: '#0A2540',
-                            text: '#E2E8F0',
-                            muted: '#94A3B8'
+                        corp: {
+                            bg: '#F8FAFC',
+                            card: '#FFFFFF',
+                            navy: '#0F172A',
+                            slate: '#1E293B',
+                            muted: '#64748B',
+                            blue: '#2563EB',
+                            blueHover: '#1D4ED8',
+                            cerulean: '#0284C7',
+                            lightBlue: '#EFF6FF',
+                            border: '#E2E8F0',
+                            accentBg: '#F1F5F9'
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Outfit', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'corp-sm': '0 1px 3px 0 rgba(15, 23, 42, 0.05), 0 1px 2px 0 rgba(15, 23, 42, 0.03)',
+                        'corp-md': '0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -1px rgba(15, 23, 42, 0.03)',
+                        'corp-lg': '0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.03)',
+                        'corp-hover': '0 20px 30px -10px rgba(37, 99, 235, 0.12), 0 10px 15px -5px rgba(15, 23, 42, 0.04)',
                     },
                     animation: {
-                        'pulse-glow': 'pulseGlow 3s infinite alternate',
-                        'marquee': 'marquee 25s linear infinite',
-                        'float': 'float 4s ease-in-out infinite',
+                        'float-gentle': 'floatGentle 6s ease-in-out infinite',
+                        'float-reverse': 'floatReverse 7s ease-in-out infinite',
+                        'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
                     },
                     keyframes: {
-                        pulseGlow: {
-                            '0%': { boxShadow: '0 0 15px rgba(0, 240, 255, 0.2)' },
-                            '100%': { boxShadow: '0 0 30px rgba(0, 240, 255, 0.6)' },
-                        },
-                        marquee: {
-                            '0%': { transform: 'translateX(0%)' },
-                            '100%': { transform: 'translateX(-50%)' },
-                        },
-                        float: {
+                        floatGentle: {
                             '0%, 100%': { transform: 'translateY(0px)' },
                             '50%': { transform: 'translateY(-10px)' },
+                        },
+                        floatReverse: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(10px)' },
+                        },
+                        pulseSubtle: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.6' },
                         }
                     }
                 }
@@ -65,879 +69,891 @@
     </script>
 
     <style>
+        /* Modern Clean Corporate Styling */
         body {
-            background-color: #080C14;
-            color: #E2E8F0;
-            overflow-x: hidden;
-            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
         }
 
-        /* Ambient glowing grid background */
-        .bg-grid-pattern {
-            background-size: 40px 40px;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        }
-
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #080C14;
+            background: #F1F5F9;
         }
         ::-webkit-scrollbar-thumb {
-            background: #1e293b;
+            background: #CBD5E1;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #00F0FF;
+            background: #94A3B8;
         }
 
-        /* Glassmorphism utility */
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .glass-card {
-            background: rgba(22, 32, 50, 0.6);
+        .glass-header {
+            background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid #E2E8F0;
         }
 
-        .glass-card:hover {
-            border-color: rgba(0, 240, 255, 0.4);
-            box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.15);
+        .corporate-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Text gradient effect */
-        .text-gradient {
-            background: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 50%, #00F0FF 100%);
+        .corporate-card:hover {
+            border-color: #2563EB;
+            box-shadow: 0 12px 28px -6px rgba(37, 99, 235, 0.12), 0 8px 12px -4px rgba(15, 23, 42, 0.04);
+            transform: translateY(-3px);
+        }
+
+        .blue-gradient-text {
+            background: linear-gradient(135deg, #0F172A 0%, #2563EB 70%, #0284C7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .text-gradient-gold {
-            background: linear-gradient(135deg, #FFF 0%, #FFB800 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
 
-        /* Interactive Spotlight Canvas Overlay */
-        #spotlight {
-            pointer-events: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-            background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(0, 240, 255, 0.05), transparent 40%);
+        /* Custom range slider styling for light mode */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: #E2E8F0;
+            border-radius: 6px;
+            height: 6px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #2563EB;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+            transition: transform 0.15s ease;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
         }
     </style>
 </head>
-<body class="relative antialiased selection:bg-brand-teal selection:text-black">
+<body class="font-sans antialiased overflow-x-hidden selection:bg-corp-blue selection:text-white">
 
-    <!-- Interactive Cursor Spotlight -->
-    <div id="spotlight"></div>
+    <!-- Interactive Canvas Vector Grid Header Background -->
+    <canvas id="heroCanvas" class="absolute top-0 left-0 w-full h-[850px] pointer-events-none z-0 opacity-60"></canvas>
 
-    <!-- Canvas Node Network Background -->
-    <canvas id="hero-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
-
-    <!-- Main Wrapper -->
-    <div class="relative z-10 flex flex-col min-h-screen bg-grid-pattern">
-
-        <!-- Navigation Bar -->
-        <header class="sticky top-0 z-50 glass-panel border-b border-white/10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Executive Sticky Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-header" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
                 
-                <!-- Logo -->
+                <!-- Brand Logo -->
                 <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-teal to-blue-600 flex items-center justify-center font-heading font-extrabold text-black text-xl shadow-lg shadow-brand-teal/20 group-hover:scale-105 transition-transform">
-                        PJ
+                    <div class="w-10 h-10 rounded-xl bg-corp-blue flex items-center justify-center text-white shadow-md shadow-corp-blue/20">
+                        <i data-lucide="trending-up" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                     </div>
-                    <div>
-                        <span class="font-heading font-extrabold text-xl tracking-tight text-white block">PremierJessie <span class="text-brand-teal">Devs</span></span>
-                        <div class="flex items-center gap-1.5 text-[10px] font-semibold text-brand-muted tracking-wider uppercase">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                            HQ: Johannesburg, SA
-                        </div>
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-lg tracking-tight text-corp-navy leading-none">
+                            PREMIERJESSIE <span class="text-corp-blue font-bold">DEVS</span>
+                        </span>
+                        <span class="text-[10px] uppercase tracking-widest text-corp-muted font-semibold mt-1">Growth & Data Engineering</span>
                     </div>
                 </a>
 
-                <!-- Desktop Nav Links -->
-                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-                    <a href="#services" class="hover:text-brand-teal transition-colors">Services</a>
-                    <a href="#calculator" class="hover:text-brand-teal transition-colors">ROI Simulator</a>
-                    <a href="#pipeline" class="hover:text-brand-teal transition-colors">Growth Engine</a>
-                    <a href="#cases" class="hover:text-brand-teal transition-colors">Impact & Work</a>
-                    <a href="#contact" class="hover:text-brand-teal transition-colors">Contact</a>
+                <!-- Nav Links -->
+                <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-corp-slate">
+                    <a href="#services" class="hover:text-corp-blue transition-colors">Capabilities</a>
+                    <a href="#calculator" class="hover:text-corp-blue transition-colors">Growth Simulator</a>
+                    <a href="#cases" class="hover:text-corp-blue transition-colors">Case Studies</a>
+                    <a href="#jhb-hq" class="hover:text-corp-blue transition-colors">Sandton HQ</a>
+                    <a href="#about" class="hover:text-corp-blue transition-colors">Methodology</a>
                 </nav>
 
-                <!-- Actions -->
-                <div class="hidden sm:flex items-center gap-4">
-                    <a href="#calculator" class="px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider text-brand-teal border border-brand-teal/30 hover:bg-brand-teal/10 transition-all">
-                        Simulate Growth
-                    </a>
-                    <a href="#contact" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-semibold rounded-lg group bg-gradient-to-br from-brand-teal to-blue-600 group-hover:from-brand-teal group-hover:to-blue-500 text-slate-900 hover:text-white transition-all shadow-lg shadow-brand-teal/20">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-slate-950 text-white rounded-[7px] group-hover:bg-opacity-0">
-                            Audit My Brand <i class="fa-solid fa-arrow-right ml-1.5 group-hover:translate-x-1 transition-transform"></i>
-                        </span>
-                    </a>
+                <!-- JHB Time Widget & CTA -->
+                <div class="hidden sm:flex items-center space-x-4">
+                    <!-- Dynamic SAST Clock -->
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-corp-lightBlue border border-corp-blue/20 text-xs font-semibold text-corp-blue">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span id="jhbTime">Sandton HQ • --:-- SAST</span>
+                    </div>
+
+                    <button onclick="openBookingModal()" class="bg-corp-blue hover:bg-corp-blueHover text-white font-bold px-5 py-2.5 rounded-xl text-sm shadow-md shadow-corp-blue/20 transition-all hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2">
+                        <span>Schedule Strategy Call</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
                 </div>
 
-                <!-- Mobile Menu Toggle Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white p-2 text-xl" aria-label="Toggle Navigation">
-                    <i class="fa-solid fa-bars"></i>
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden text-corp-navy hover:text-corp-blue p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
+        </div>
 
-            <!-- Mobile Menu Dropdown -->
-            <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
-                <a href="#services" class="block py-2 text-slate-300 hover:text-brand-teal font-medium">Services</a>
-                <a href="#calculator" class="block py-2 text-slate-300 hover:text-brand-teal font-medium">ROI Simulator</a>
-                <a href="#pipeline" class="block py-2 text-slate-300 hover:text-brand-teal font-medium">Growth Engine</a>
-                <a href="#cases" class="block py-2 text-slate-300 hover:text-brand-teal font-medium">Impact & Work</a>
-                <a href="#contact" class="block py-2 text-slate-300 hover:text-brand-teal font-medium">Contact</a>
-                <div class="pt-4 flex flex-col gap-3">
-                    <a href="#contact" class="w-full text-center py-3 bg-brand-teal text-slate-950 font-bold rounded-lg text-sm shadow-md">
-                        Audit My Brand
-                    </a>
-                </div>
+        <!-- Mobile Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-corp-border px-6 pt-4 pb-6 space-y-4 shadow-xl">
+            <a href="#services" class="mobile-link block py-2 text-corp-slate font-semibold hover:text-corp-blue">Capabilities</a>
+            <a href="#calculator" class="mobile-link block py-2 text-corp-slate font-semibold hover:text-corp-blue">Growth Simulator</a>
+            <a href="#cases" class="mobile-link block py-2 text-corp-slate font-semibold hover:text-corp-blue">Case Studies</a>
+            <a href="#jhb-hq" class="mobile-link block py-2 text-corp-slate font-semibold hover:text-corp-blue">Sandton HQ</a>
+            <a href="#about" class="mobile-link block py-2 text-corp-slate font-semibold hover:text-corp-blue">Methodology</a>
+            <div class="pt-2 border-t border-corp-border">
+                <button onclick="openBookingModal()" class="w-full bg-corp-blue text-white font-bold py-3 rounded-xl text-center">
+                    Schedule Strategy Call
+                </button>
             </div>
-        </header>
+        </div>
+    </header>
+
+    <main class="relative z-10 pt-20">
 
         <!-- HERO SECTION -->
-        <section class="relative pt-12 lg:pt-20 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
-            
-            <!-- Location & Quality Tag -->
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel text-xs font-semibold text-brand-teal mb-8 border border-brand-teal/30 shadow-md">
-                <span class="w-2 h-2 rounded-full bg-brand-gold"></span>
-                Johannesburg's Premier Tech & Growth Partner
-                <span class="text-slate-500">|</span>
-                <span class="text-slate-300">Global Standards</span>
+        <section class="relative min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+            <div class="max-w-6xl mx-auto text-center relative z-10">
+                
+                <!-- Corporate Location Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-corp-border shadow-corp-sm text-xs sm:text-sm font-semibold mb-8 text-corp-slate">
+                    <span class="w-2.5 h-2.5 rounded-full bg-corp-blue"></span>
+                    <span>Corporate Growth Consulting & Full-Stack Engineering</span>
+                    <span class="text-corp-border">|</span>
+                    <span class="text-corp-blue">Sandton, Johannesburg</span>
+                </div>
+
+                <!-- Main Executive Title -->
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-corp-navy leading-[1.1] mb-6">
+                    Accelerating Enterprise Growth For <br class="hidden sm:inline">
+                    <span class="blue-gradient-text">African & Global Market Leaders</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-base sm:text-xl text-corp-muted max-w-3xl mx-auto font-normal leading-relaxed mb-10">
+                    We combine rigorous management consulting principles with full-stack software development and precision performance marketing to compound client revenue in high-growth markets.
+                </p>
+
+                <!-- Dual Action CTAs -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-16">
+                    <button onclick="openBookingModal()" class="w-full sm:w-auto bg-corp-blue hover:bg-corp-blueHover text-white font-bold px-8 py-4 rounded-xl text-base shadow-corp-md transition-all hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        <span>Audit Enterprise Funnel</span>
+                    </button>
+                    <a href="#calculator" class="w-full sm:w-auto bg-white hover:bg-corp-accentBg text-corp-navy font-bold px-8 py-4 rounded-xl text-base transition-all border border-corp-border shadow-corp-sm flex items-center justify-center gap-2">
+                        <i data-lucide="calculator" class="w-5 h-5 text-corp-blue"></i>
+                        <span>Launch Growth Simulator</span>
+                    </a>
+                </div>
+
+                <!-- Animated KPI Numbers -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto pt-10 border-t border-corp-border">
+                    <div class="corporate-card p-5 rounded-2xl text-center shadow-corp-sm">
+                        <div class="text-2xl sm:text-4xl font-extrabold text-corp-navy mb-1 flex items-center justify-center font-mono">
+                            <span>R</span><span class="counter" data-target="480">0</span><span>M+</span>
+                        </div>
+                        <div class="text-xs sm:text-sm text-corp-muted font-semibold">Client Revenue Scaled</div>
+                    </div>
+                    <div class="corporate-card p-5 rounded-2xl text-center shadow-corp-sm">
+                        <div class="text-2xl sm:text-4xl font-extrabold text-corp-blue mb-1 flex items-center justify-center font-mono">
+                            <span class="counter" data-target="11">0</span><span>.8x</span>
+                        </div>
+                        <div class="text-xs sm:text-sm text-corp-muted font-semibold">Average Blended ROAS</div>
+                    </div>
+                    <div class="corporate-card p-5 rounded-2xl text-center shadow-corp-sm">
+                        <div class="text-2xl sm:text-4xl font-extrabold text-corp-cerulean mb-1 flex items-center justify-center font-mono">
+                            <span class="counter" data-target="97">0</span><span>.8%</span>
+                        </div>
+                        <div class="text-xs sm:text-sm text-corp-muted font-semibold">Enterprise Retain Rate</div>
+                    </div>
+                    <div class="corporate-card p-5 rounded-2xl text-center shadow-corp-sm">
+                        <div class="text-2xl sm:text-4xl font-extrabold text-corp-navy mb-1 flex items-center justify-center font-mono">
+                            <span class="counter" data-target="50">0</span><span>+</span>
+                        </div>
+                        <div class="text-xs sm:text-sm text-corp-muted font-semibold">High-Scale Deployments</div>
+                    </div>
+                </div>
+
             </div>
+        </section>
 
-            <!-- Main Heading -->
-            <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl leading-tight sm:leading-tight">
-                Accelerating Enterprise & Scale-Up Growth in <span class="text-gradient">Johannesburg & Beyond</span>
-            </h1>
-
-            <p class="mt-6 text-lg sm:text-xl text-brand-muted max-w-3xl font-normal leading-relaxed">
-                We bridge high-end engineering with ruthless acquisition marketing. Custom web architectures, AI data engineering, and conversion engines designed to scale revenue exponentially.
-            </p>
-
-            <!-- Dual CTA Buttons -->
-            <div class="mt-10 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-teal to-blue-500 text-slate-950 font-heading font-extrabold text-base shadow-xl shadow-brand-teal/25 hover:shadow-brand-teal/40 hover:scale-105 transition-all text-center">
-                    Scale Your Business <i class="fa-solid fa-rocket ml-2"></i>
-                </a>
-                <a href="#calculator" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card text-white font-heading font-semibold text-base hover:bg-slate-800/80 transition-all text-center flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-calculator text-brand-teal"></i> Calculate Projected ROI
-                </a>
+        <!-- CORPORATE PARTNER BAR -->
+        <section class="py-8 border-y border-corp-border bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 mb-3 text-center">
+                <p class="text-xs font-bold uppercase tracking-widest text-corp-muted">Trusted by Executive Leadership at Regional & International Brands</p>
             </div>
-
-            <!-- Key Stats Bar -->
-            <div class="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 w-full">
-                <div class="glass-card p-6 rounded-2xl text-center">
-                    <div class="font-heading text-3xl sm:text-4xl font-extrabold text-white counter" data-target="340">+0%</div>
-                    <div class="text-xs sm:text-sm text-brand-muted font-medium mt-1">Avg Revenue Growth</div>
-                </div>
-                <div class="glass-card p-6 rounded-2xl text-center">
-                    <div class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-teal counter" data-target="150">R0M+</div>
-                    <div class="text-xs sm:text-sm text-brand-muted font-medium mt-1">Client Revenue Generated</div>
-                </div>
-                <div class="glass-card p-6 rounded-2xl text-center">
-                    <div class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-gold counter" data-target="99.4">0%</div>
-                    <div class="text-xs sm:text-sm text-brand-muted font-medium mt-1">Client Retention Rate</div>
-                </div>
-                <div class="glass-card p-6 rounded-2xl text-center">
-                    <div class="font-heading text-3xl sm:text-4xl font-extrabold text-white counter" data-target="45">+0</div>
-                    <div class="text-xs sm:text-sm text-brand-muted font-medium mt-1">Scale-Ups Accelerated</div>
+            <div class="flex overflow-hidden relative w-full">
+                <div class="flex space-x-12 animate-marquee whitespace-nowrap items-center text-corp-muted font-bold text-sm tracking-wide">
+                    <span class="flex items-center gap-2"><i data-lucide="building" class="w-4 h-4 text-corp-blue"></i> SANDTON CAPITAL GROUP</span>
+                    <span class="flex items-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4 text-corp-blue"></i> ZULU E-COMMERCE</span>
+                    <span class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-corp-blue"></i> AFRITECH SYSTEMS</span>
+                    <span class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-corp-blue"></i> HIGHVELD FINANCIAL</span>
+                    <span class="flex items-center gap-2"><i data-lucide="globe-2" class="w-4 h-4 text-corp-blue"></i> EGOLI ENERGY</span>
+                    <span class="flex items-center gap-2"><i data-lucide="building" class="w-4 h-4 text-corp-blue"></i> SANDTON CAPITAL GROUP</span>
+                    <span class="flex items-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4 text-corp-blue"></i> ZULU E-COMMERCE</span>
                 </div>
             </div>
         </section>
 
-        <!-- CLIENT MARQUEE TICKER -->
-        <div class="py-6 border-y border-white/5 bg-slate-950/40 overflow-hidden relative">
-            <div class="flex gap-12 whitespace-nowrap animate-marquee items-center text-slate-400 font-heading text-sm font-semibold uppercase tracking-widest">
-                <span><i class="fa-solid fa-shield-halved text-brand-teal mr-2"></i> Standard Bank Fintech Hub</span>
-                <span><i class="fa-solid fa-bolt text-brand-gold mr-2"></i> Sandton Enterprise Cloud</span>
-                <span><i class="fa-solid fa-gem text-blue-400 mr-2"></i> JHB Luxury Retail</span>
-                <span><i class="fa-solid fa-chart-line text-emerald-400 mr-2"></i> Cape & Rand SaaS Engine</span>
-                <span><i class="fa-solid fa-microchip text-brand-teal mr-2"></i> NextGen Logistics SA</span>
-                <span><i class="fa-solid fa-shield-halved text-brand-teal mr-2"></i> Standard Bank Fintech Hub</span>
-                <span><i class="fa-solid fa-bolt text-brand-gold mr-2"></i> Sandton Enterprise Cloud</span>
-                <span><i class="fa-solid fa-gem text-blue-400 mr-2"></i> JHB Luxury Retail</span>
-                <span><i class="fa-solid fa-chart-line text-emerald-400 mr-2"></i> Cape & Rand SaaS Engine</span>
-            </div>
-        </div>
+        <!-- CORE CAPABILITIES (FILTERABLE GRID) -->
+        <section id="services" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-corp-blue font-bold uppercase text-xs tracking-widest bg-corp-lightBlue px-3.5 py-1.5 rounded-full border border-corp-blue/20">Executive Capabilities</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-corp-navy mt-4 mb-4">
+                    End-to-End Growth Architecture
+                </h2>
+                <p class="text-corp-muted text-base sm:text-lg">
+                    We eliminate corporate silos by pairing senior software engineers with elite data strategists under a unified performance-linked framework.
+                </p>
 
-        <!-- SERVICES SECTION WITH FILTERABLE SHOWCASE -->
-        <section id="services" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="text-xs font-extrabold uppercase tracking-widest text-brand-teal mb-3">Architected For Scale</h2>
-                <h3 class="font-heading text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Enterprise Growth Services</h3>
-                <p class="mt-4 text-slate-400 text-base sm:text-lg">We combine custom web engineering with data science to unlock compounding revenue engines.</p>
+                <!-- Capability Filters -->
+                <div class="flex flex-wrap justify-center gap-2 mt-8" id="serviceFilters">
+                    <button onclick="filterServices('all')" class="svc-filter active px-4 py-2 rounded-xl text-xs font-bold border border-corp-blue bg-corp-blue text-white transition-all">All Capabilities</button>
+                    <button onclick="filterServices('perf')" class="svc-filter px-4 py-2 rounded-xl text-xs font-bold border border-corp-border bg-white text-corp-slate hover:border-corp-blue transition-all">Performance Marketing</button>
+                    <button onclick="filterServices('dev')" class="svc-filter px-4 py-2 rounded-xl text-xs font-bold border border-corp-border bg-white text-corp-slate hover:border-corp-blue transition-all">Web & App Engineering</button>
+                    <button onclick="filterServices('cro')" class="svc-filter px-4 py-2 rounded-xl text-xs font-bold border border-corp-border bg-white text-corp-slate hover:border-corp-blue transition-all">Revenue Ops & CRO</button>
+                </div>
             </div>
 
-            <!-- Service Filter Tabs -->
-            <div class="mt-10 flex flex-wrap justify-center gap-2 sm:gap-4">
-                <button class="service-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-brand-teal text-slate-950" data-filter="all">All Ecosystems</button>
-                <button class="service-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all glass-panel text-slate-300 hover:text-white" data-filter="dev">Custom Web & Apps</button>
-                <button class="service-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all glass-panel text-slate-300 hover:text-white" data-filter="growth">Performance Acquisition</button>
-                <button class="service-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all glass-panel text-slate-300 hover:text-white" data-filter="analytics">Data Engineering</button>
-            </div>
-
-            <!-- 3D Interactive Cards Grid -->
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="servicesGrid">
                 
                 <!-- Service Card 1 -->
-                <div class="service-card glass-card rounded-2xl p-8 relative overflow-hidden group tilt-card" data-category="dev">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-teal/10 border border-brand-teal/30 flex items-center justify-center text-brand-teal text-2xl mb-6 group-hover:bg-brand-teal group-hover:text-slate-950 transition-colors">
-                        <i class="fa-solid fa-code"></i>
+                <div class="corporate-card p-8 rounded-2xl relative shadow-corp-sm svc-card" data-svc="perf">
+                    <div class="w-12 h-12 rounded-xl bg-corp-lightBlue border border-corp-blue/20 flex items-center justify-center mb-6 text-corp-blue">
+                        <i data-lucide="target" class="w-6 h-6"></i>
                     </div>
-                    <h4 class="font-heading text-xl font-bold text-white mb-3">Custom Web/App Ecosystems</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Ultra-fast Next.js & React architectures engineered for maximum speed, security, and enterprise conversion performance.
+                    <h3 class="text-xl font-bold text-corp-navy mb-3">Enterprise Paid Acquisition</h3>
+                    <p class="text-corp-muted text-sm leading-relaxed mb-6">
+                        Algorithmic Google Ads, LinkedIn B2B campaigns, and Meta paid advertising structured around strict Customer Acquisition Cost (CAC) efficiency.
                     </p>
-                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-teal"></i> Headless CMS Architecture</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-teal"></i> Sub-Second Page Load Speeds</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-teal"></i> Payment Gateway Integrations</li>
+                    <ul class="space-y-2.5 text-xs text-corp-slate font-semibold">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> Server-Side CAPI Integration</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> High-Intent B2B Account Targeting</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> First-Party Data Attribution</li>
                     </ul>
-                    <a href="#contact" class="inline-flex items-center text-xs font-extrabold text-brand-teal uppercase tracking-wider group-hover:translate-x-2 transition-transform">
-                        Explore Stack <i class="fa-solid fa-arrow-right ml-2"></i>
-                    </a>
                 </div>
 
                 <!-- Service Card 2 -->
-                <div class="service-card glass-card rounded-2xl p-8 relative overflow-hidden group tilt-card" data-category="growth">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:bg-brand-gold group-hover:text-slate-950 transition-colors">
-                        <i class="fa-solid fa-chart-pie"></i>
+                <div class="corporate-card p-8 rounded-2xl relative shadow-corp-sm svc-card" data-svc="dev">
+                    <div class="w-12 h-12 rounded-xl bg-corp-lightBlue border border-corp-blue/20 flex items-center justify-center mb-6 text-corp-blue">
+                        <i data-lucide="code-2" class="w-6 h-6"></i>
                     </div>
-                    <h4 class="font-heading text-xl font-bold text-white mb-3">High-Ticket Acquisition</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Data-driven Paid Search & Social campaign strategies targeting enterprise decision-makers across South Africa and worldwide.
+                    <h3 class="text-xl font-bold text-corp-navy mb-3">Full-Stack Custom Development</h3>
+                    <p class="text-corp-muted text-sm leading-relaxed mb-6">
+                        Ultra-fast Web & SaaS application engineering leveraging Next.js, React, and microservice architectures built for high-scale conversion.
                     </p>
-                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> LinkedIn B2B Pipeline Engines</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> Google Search Intent Funnels</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> Retargeting & Lead Nurturing</li>
+                    <ul class="space-y-2.5 text-xs text-corp-slate font-semibold">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> Headless E-Commerce Architecture</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> Sub-Second Page Load Optimization</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> Enterprise API & CRM Integrations</li>
                     </ul>
-                    <a href="#contact" class="inline-flex items-center text-xs font-extrabold text-brand-gold uppercase tracking-wider group-hover:translate-x-2 transition-transform">
-                        Explore Growth <i class="fa-solid fa-arrow-right ml-2"></i>
-                    </a>
                 </div>
 
                 <!-- Service Card 3 -->
-                <div class="service-card glass-card rounded-2xl p-8 relative overflow-hidden group tilt-card" data-category="growth">
-                    <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl mb-6 group-hover:bg-blue-500 group-hover:text-slate-950 transition-colors">
-                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <div class="corporate-card p-8 rounded-2xl relative shadow-corp-sm svc-card" data-svc="cro">
+                    <div class="w-12 h-12 rounded-xl bg-corp-lightBlue border border-corp-blue/20 flex items-center justify-center mb-6 text-corp-blue">
+                        <i data-lucide="line-chart" class="w-6 h-6"></i>
                     </div>
-                    <h4 class="font-heading text-xl font-bold text-white mb-3">Dominant SEO & Organic Search</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Dominate search engine results in Johannesburg, Sandton, and international target markets with technical SEO supremacy.
+                    <h3 class="text-xl font-bold text-corp-navy mb-3">Conversion Rate Optimization</h3>
+                    <p class="text-corp-muted text-sm leading-relaxed mb-6">
+                        Methodical UX restructuring, heatmapping analytics, and multivariate landing page tests designed to maximize pipeline volume from existing traffic.
                     </p>
-                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Local & Regional Geo-Targeting</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Programmatic Content Scaling</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> High-Authority Link Networks</li>
+                    <ul class="space-y-2.5 text-xs text-corp-slate font-semibold">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> Heatmap & Friction Audits</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> Checkout & Form Streamlining</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> Personalized Landing Pages</li>
                     </ul>
-                    <a href="#contact" class="inline-flex items-center text-xs font-extrabold text-blue-400 uppercase tracking-wider group-hover:translate-x-2 transition-transform">
-                        Explore SEO <i class="fa-solid fa-arrow-right ml-2"></i>
-                    </a>
                 </div>
 
                 <!-- Service Card 4 -->
-                <div class="service-card glass-card rounded-2xl p-8 relative overflow-hidden group tilt-card" data-category="analytics">
-                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl mb-6 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-colors">
-                        <i class="fa-solid fa-network-wired"></i>
+                <div class="corporate-card p-8 rounded-2xl relative shadow-corp-sm svc-card" data-svc="cro">
+                    <div class="w-12 h-12 rounded-xl bg-corp-lightBlue border border-corp-blue/20 flex items-center justify-center mb-6 text-corp-blue">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
                     </div>
-                    <h4 class="font-heading text-xl font-bold text-white mb-3">AI & Attribution Data Stack</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Complete data transparency. Multi-touch attribution models so you know every Rand spent translates to real revenue.
+                    <h3 class="text-1xl font-bold text-corp-navy mb-3">Revenue Operations & AI Workflows</h3>
+                    <p class="text-corp-muted text-sm leading-relaxed mb-6">
+                        Custom AI automation protocols, centralized lead scoring, and automated CRM pipelines that empower sales teams to close deals faster.
                     </p>
-                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Server-Side API Tracking</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Real-time Executive Dashboards</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Predictive Customer LTV</li>
+                    <ul class="space-y-2.5 text-xs text-corp-slate font-semibold">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> CRM Pipeline Automation</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> AI Lead Qualification Bots</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> Executive BI Dashboards</li>
                     </ul>
-                    <a href="#contact" class="inline-flex items-center text-xs font-extrabold text-emerald-400 uppercase tracking-wider group-hover:translate-x-2 transition-transform">
-                        Explore Data <i class="fa-solid fa-arrow-right ml-2"></i>
-                    </a>
                 </div>
 
                 <!-- Service Card 5 -->
-                <div class="service-card glass-card rounded-2xl p-8 relative overflow-hidden group tilt-card" data-category="dev">
-                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl mb-6 group-hover:bg-purple-500 group-hover:text-slate-950 transition-colors">
-                        <i class="fa-solid fa-sliders"></i>
+                <div class="corporate-card p-8 rounded-2xl relative shadow-corp-sm svc-card" data-svc="perf">
+                    <div class="w-12 h-12 rounded-xl bg-corp-lightBlue border border-corp-blue/20 flex items-center justify-center mb-6 text-corp-blue">
+                        <i data-lucide="repeat" class="w-6 h-6"></i>
                     </div>
-                    <h4 class="font-heading text-xl font-bold text-white mb-3">Conversion Rate Optimization (CRO)</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Turn existing traffic into paying clients with scientific A/B testing, UX heatmaps, and psychological trigger copy.
+                    <h3 class="text-xl font-bold text-corp-navy mb-3">Retention & LTV Maximization</h3>
+                    <p class="text-corp-muted text-sm leading-relaxed mb-6">
+                        Systematic lifecycle marketing, transactional SMS/email architectures, and automated retention flows that increase Customer Lifetime Value.
                     </p>
-                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> User Behavior & Heatmaps</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Multivariate Landing Tests</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Frictionless Checkout Engineering</li>
+                    <ul class="space-y-2.5 text-xs text-corp-slate font-semibold">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> Omnichannel Flow Deployment</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> Subscription Loyalty Systems</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-corp-blue"></i> Churn Prevention Analytics</li>
                     </ul>
-                    <a href="#contact" class="inline-flex items-center text-xs font-extrabold text-purple-400 uppercase tracking-wider group-hover:translate-x-2 transition-transform">
-                        Explore CRO <i class="fa-solid fa-arrow-right ml-2"></i>
-                    </a>
                 </div>
 
-                <!-- Service Card 6 -->
-                <div class="service-card glass-card rounded-2xl p-8 relative overflow-hidden group tilt-card" data-category="growth">
-                    <div class="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-2xl mb-6 group-hover:bg-pink-500 group-hover:text-slate-950 transition-colors">
-                        <i class="fa-solid fa-arrows-spin"></i>
+                <!-- Service Card 6 (Retainer CTA) -->
+                <div class="corporate-card p-8 rounded-2xl relative shadow-corp-sm bg-gradient-to-br from-corp-blue to-corp-blueHover text-white flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center mb-6 text-white">
+                            <i data-lucide="briefcase" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Dedicated Growth Retainers</h3>
+                        <p class="text-white/80 text-sm leading-relaxed mb-6">
+                            Fractional CMO & full engineering execution pod embedded directly within your enterprise operating rhythm.
+                        </p>
                     </div>
-                    <h4 class="font-heading text-xl font-bold text-white mb-3">Full Fractional Growth Team</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Access an entire dedicated team of Senior Engineers, Growth Strategists, and Copywriters for a fraction of in-house costs.
-                    </p>
-                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Weekly Growth Sprints</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Dedicated JHB Account Director</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> 100% Scalable Velocity</li>
-                    </ul>
-                    <a href="#contact" class="inline-flex items-center text-xs font-extrabold text-pink-400 uppercase tracking-wider group-hover:translate-x-2 transition-transform">
-                        Explore Retainers <i class="fa-solid fa-arrow-right ml-2"></i>
-                    </a>
+                    <button onclick="openBookingModal()" class="w-full bg-white hover:bg-corp-lightBlue text-corp-blue font-bold py-3 rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2">
+                        <span>Consult Growth Partner</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
                 </div>
 
             </div>
         </section>
 
-        <!-- INTERACTIVE ROI SIMULATOR CALCULATOR -->
-        <section id="calculator" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-            <div class="glass-panel rounded-3xl p-6 sm:p-12 border border-brand-teal/20 relative overflow-hidden">
-                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-teal/10 rounded-full blur-3xl pointer-events-none"></div>
+        <!-- INTERACTIVE ROI & GROWTH SIMULATOR TOOL (WITH CHART.JS) -->
+        <section id="calculator" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="corporate-card rounded-3xl p-8 sm:p-12 shadow-corp-lg border-corp-blue/30 relative">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-corp-blue font-bold uppercase text-xs tracking-widest bg-corp-lightBlue px-3.5 py-1.5 rounded-full border border-corp-blue/20">Executive Tool</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-corp-navy mt-3">
+                        6-Month Pipeline & Revenue Growth Simulator
+                    </h2>
+                    <p class="text-corp-muted text-sm sm:text-base mt-2">
+                        Adjust marketing investment parameters below to visualize modeled growth trajectories.
+                    </p>
+                </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                     
-                    <!-- Calculator Inputs -->
+                    <!-- Left: Sliders -->
                     <div class="lg:col-span-5 space-y-6">
+                        
+                        <!-- Slider 1 -->
                         <div>
-                            <span class="text-xs font-extrabold uppercase tracking-widest text-brand-teal">Interactive Tool</span>
-                            <h3 class="font-heading text-3xl font-extrabold text-white mt-1">Growth ROI Simulator</h3>
-                            <p class="text-slate-400 text-sm mt-2">Adjust your current metrics to forecast scale potential with PremierJessie Devs stack.</p>
-                        </div>
-
-                        <!-- Range Slider 1: Monthly Ad Spend -->
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span class="text-slate-300 font-medium">Monthly Marketing Budget</span>
-                                <span class="text-brand-teal font-extrabold" id="spend-val">R50,000</span>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-sm font-bold text-corp-navy">Monthly Marketing Budget (ZAR)</label>
+                                <span class="text-base font-extrabold text-corp-blue font-mono" id="simSpendVal">R50,000</span>
                             </div>
-                            <input type="range" id="input-spend" min="10000" max="500000" step="5000" value="50000" class="w-full accent-brand-teal h-2 bg-slate-800 rounded-lg cursor-pointer">
-                        </div>
-
-                        <!-- Range Slider 2: Average Deal Value -->
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span class="text-slate-300 font-medium">Average Deal / Order Value</span>
-                                <span class="text-brand-gold font-extrabold" id="deal-val">R15,000</span>
+                            <input type="range" id="simSpend" min="15000" max="500000" step="5000" value="50000" class="w-full">
+                            <div class="flex justify-between text-[11px] text-corp-muted mt-1">
+                                <span>R15k</span>
+                                <span>R250k</span>
+                                <span>R500k+</span>
                             </div>
-                            <input type="range" id="input-deal" min="1000" max="100000" step="1000" value="15000" class="w-full accent-brand-gold h-2 bg-slate-800 rounded-lg cursor-pointer">
                         </div>
 
-                        <!-- Range Slider 3: Target Conversion Boost -->
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span class="text-slate-300 font-medium">Target Traffic Volume (Visitors/mo)</span>
-                                <span class="text-blue-400 font-extrabold" id="traffic-val">25,000</span>
+                        <!-- Slider 2 -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-sm font-bold text-corp-navy">Target Deal / Order Value (ZAR)</label>
+                                <span class="text-base font-extrabold text-corp-cerulean font-mono" id="simDealVal">R12,500</span>
                             </div>
-                            <input type="range" id="input-traffic" min="5000" max="250000" step="5000" value="25000" class="w-full accent-blue-400 h-2 bg-slate-800 rounded-lg cursor-pointer">
+                            <input type="range" id="simDeal" min="1000" max="100000" step="1000" value="12500" class="w-full">
+                            <div class="flex justify-between text-[11px] text-corp-muted mt-1">
+                                <span>R1,000</span>
+                                <span>R50,000</span>
+                                <span>R100,000</span>
+                            </div>
                         </div>
 
-                        <!-- Metrics Summary Box -->
-                        <div class="p-4 rounded-xl bg-slate-950/60 border border-white/5 grid grid-cols-2 gap-4">
+                        <!-- Slider 3 -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-sm font-bold text-corp-navy">Expected Conversion Optimization</label>
+                                <span class="text-base font-extrabold text-emerald-600 font-mono" id="simConvVal">2.8% Rate</span>
+                            </div>
+                            <input type="range" id="simConv" min="1.0" max="6.0" step="0.2" value="2.8" class="w-full">
+                            <div class="flex justify-between text-[11px] text-corp-muted mt-1">
+                                <span>1.0% (Standard)</span>
+                                <span>3.5% (Optimized)</span>
+                                <span>6.0% (Premier)</span>
+                            </div>
+                        </div>
+
+                        <!-- Numerical Calculations Output Box -->
+                        <div class="p-5 rounded-2xl bg-corp-lightBlue border border-corp-blue/20 grid grid-cols-2 gap-4">
                             <div>
-                                <div class="text-[11px] text-slate-400 uppercase font-semibold">Projected Monthly Leads</div>
-                                <div class="text-xl font-extrabold text-white mt-1" id="projected-leads">125</div>
+                                <span class="text-xs uppercase text-corp-muted font-bold">Monthly Qualified Leads</span>
+                                <div class="text-2xl font-extrabold text-corp-navy font-mono mt-1" id="resLeads">112</div>
                             </div>
                             <div>
-                                <div class="text-[11px] text-slate-400 uppercase font-semibold">Estimated Net Revenue</div>
-                                <div class="text-xl font-extrabold text-brand-teal mt-1" id="projected-rev">R468,750</div>
+                                <span class="text-xs uppercase text-corp-muted font-bold">Est. Monthly Pipeline Value</span>
+                                <div class="text-2xl font-extrabold text-corp-blue font-mono mt-1" id="resPipeline">R1.4M</div>
                             </div>
                         </div>
+
                     </div>
 
-                    <!-- Dynamic Canvas Chart Display -->
-                    <div class="lg:col-span-7 bg-slate-950/80 p-6 rounded-2xl border border-white/10 flex flex-col justify-between h-full min-h-[340px]">
+                    <!-- Right: Dynamic Chart.js Trajectory Canvas -->
+                    <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-corp-border shadow-corp-sm">
                         <div class="flex items-center justify-between mb-4">
-                            <h4 class="text-sm font-bold text-slate-200">6-Month Projected Growth Curve</h4>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 font-semibold border border-emerald-500/20">
-                                <i class="fa-solid fa-arrow-trend-up mr-1"></i> Optimised Projection
+                            <span class="text-xs font-bold text-corp-navy uppercase tracking-wider flex items-center gap-2">
+                                <i data-lucide="trending-up" class="w-4 h-4 text-corp-blue"></i>
+                                Projected 6-Month Compound Growth
                             </span>
+                            <span class="text-xs text-corp-muted font-mono" id="resROASDisplay">Est. ROAS: 7.2x</span>
                         </div>
-                        <div class="relative w-full h-64">
-                            <canvas id="roiChart"></canvas>
+                        <div class="relative h-[260px] w-full">
+                            <canvas id="growthChart"></canvas>
                         </div>
                     </div>
 
                 </div>
-            </div>
-        </section>
 
-        <!-- ANIMATED PROCESS PIPELINE FLOW -->
-        <section id="pipeline" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-extrabold uppercase tracking-widest text-brand-teal mb-3">Methodology</h2>
-                <h3 class="font-heading text-3xl sm:text-5xl font-extrabold text-white tracking-tight">The Growth Engine Pipeline</h3>
-                <p class="mt-4 text-slate-400 text-base">Continuous iteration to guarantee predictable enterprise scale.</p>
-            </div>
-
-            <!-- Pipeline SVG Connected Steps -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
-                
-                <!-- Step 1 -->
-                <div class="glass-card p-6 rounded-2xl relative border-t-2 border-brand-teal">
-                    <div class="text-4xl font-extrabold font-heading text-brand-teal/20 mb-4">01</div>
-                    <h4 class="font-heading text-lg font-bold text-white mb-2">Audit & Architecture</h4>
-                    <p class="text-slate-400 text-xs leading-relaxed">Deconstruct tech bottlenecks, conversion drop-offs, and competitor acquisition vectors in JHB market.</p>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="glass-card p-6 rounded-2xl relative border-t-2 border-brand-gold">
-                    <div class="text-4xl font-extrabold font-heading text-brand-gold/20 mb-4">02</div>
-                    <h4 class="font-heading text-lg font-bold text-white mb-2">Custom Dev Build</h4>
-                    <p class="text-slate-400 text-xs leading-relaxed">Engineering ultra-performant React/Next.js landing pages and tracking servers built for speed.</p>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="glass-card p-6 rounded-2xl relative border-t-2 border-blue-400">
-                    <div class="text-4xl font-extrabold font-heading text-blue-400/20 mb-4">03</div>
-                    <h4 class="font-heading text-lg font-bold text-white mb-2">Multi-Channel Launch</h4>
-                    <p class="text-slate-400 text-xs leading-relaxed">Deploying targeted omni-channel acquisition paid ads and high-ranking SEO strategies.</p>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="glass-card p-6 rounded-2xl relative border-t-2 border-emerald-400">
-                    <div class="text-4xl font-extrabold font-heading text-emerald-400/20 mb-4">04</div>
-                    <h4 class="font-heading text-lg font-bold text-white mb-2">CRO & Scale Sprints</h4>
-                    <p class="text-slate-400 text-xs leading-relaxed">Relentless continuous optimization, A/B testing, and doubling down on top-performing pipelines.</p>
+                <div class="mt-8 text-center">
+                    <button onclick="openBookingModal()" class="bg-corp-blue hover:bg-corp-blueHover text-white font-bold px-8 py-3.5 rounded-xl text-sm shadow-corp-md transition-all inline-flex items-center gap-2">
+                        <span>Schedule Executive Audit to Lock In Strategy</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
                 </div>
 
             </div>
         </section>
 
-        <!-- CASE STUDIES / IMPACT SECTION -->
-        <section id="cases" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <!-- CASE STUDIES SECTION -->
+        <section id="cases" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                 <div>
-                    <h2 class="text-xs font-extrabold uppercase tracking-widest text-brand-teal mb-3">Proven Results</h2>
-                    <h3 class="font-heading text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Johannesburg Impact Case Studies</h3>
+                    <span class="text-corp-blue font-bold uppercase text-xs tracking-widest bg-corp-lightBlue px-3.5 py-1.5 rounded-full border border-corp-blue/20">Proven Results</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-corp-navy mt-4">
+                        Growth Impact Studies
+                    </h2>
                 </div>
-                <a href="#contact" class="mt-4 md:mt-0 text-xs font-extrabold text-brand-teal uppercase tracking-wider hover:underline">
-                    View All Success Stories <i class="fa-solid fa-arrow-right ml-1"></i>
-                </a>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                <!-- Case Study 1 -->
-                <div class="glass-card rounded-2xl overflow-hidden group">
-                    <div class="h-48 bg-slate-900 relative p-6 flex flex-col justify-between border-b border-white/5 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(15,23,42,0.6), rgba(15,23,42,0.95)), url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80');">
-                        <span class="self-start px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-brand-teal text-slate-950">Sandton Fintech</span>
-                        <div>
-                            <div class="text-2xl font-extrabold text-white font-heading">+410% ARR Growth</div>
-                            <div class="text-xs text-brand-muted">Scale-Up Payment Gateway</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-slate-400 text-xs leading-relaxed mb-4">Re-architected core web app to React, implemented automated server attribution, and scaled Google Search campaigns.</p>
-                        <div class="flex items-center justify-between text-xs font-semibold text-slate-300 pt-4 border-t border-white/5">
-                            <span>Timeframe: 5 Months</span>
-                            <span class="text-brand-teal">Custom Next.js Stack</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Case Study 2 -->
-                <div class="glass-card rounded-2xl overflow-hidden group">
-                    <div class="h-48 bg-slate-900 relative p-6 flex flex-col justify-between border-b border-white/5 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(15,23,42,0.6), rgba(15,23,42,0.95)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80');">
-                        <span class="self-start px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-brand-gold text-slate-950">Rosebank E-Commerce</span>
-                        <div>
-                            <div class="text-2xl font-extrabold text-white font-heading">R24M New Sales</div>
-                            <div class="text-xs text-brand-muted">Luxury Brand Apparel</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-slate-400 text-xs leading-relaxed mb-4">CRO optimization boosted checkout conversion by 2.4x while scaling targeted high-ticket acquisition ads across Meta & Google.</p>
-                        <div class="flex items-center justify-between text-xs font-semibold text-slate-300 pt-4 border-t border-white/5">
-                            <span>Timeframe: 8 Months</span>
-                            <span class="text-brand-gold">Headless Commerce</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Case Study 3 -->
-                <div class="glass-card rounded-2xl overflow-hidden group">
-                    <div class="h-48 bg-slate-900 relative p-6 flex flex-col justify-between border-b border-white/5 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(15,23,42,0.6), rgba(15,23,42,0.95)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80');">
-                        <span class="self-start px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-blue-500 text-slate-950">Commercial Real Estate</span>
-                        <div>
-                            <div class="text-2xl font-extrabold text-white font-heading">3.8x Qualified Leads</div>
-                            <div class="text-xs text-brand-muted">B2B Enterprise Portal</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-slate-400 text-xs leading-relaxed mb-4">Complete SEO overhaul and LinkedIn account-based marketing campaign targeting institutional property investors.</p>
-                        <div class="flex items-center justify-between text-xs font-semibold text-slate-300 pt-4 border-t border-white/5">
-                            <span>Timeframe: 6 Months</span>
-                            <span class="text-blue-400">SEO & ABM Funnel</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- CONTACT & AUDIT REQUEST SECTION -->
-        <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                
-                <!-- Contact Info Panel -->
-                <div class="lg:col-span-5 space-y-8">
+                <!-- Case 1 -->
+                <div class="corporate-card rounded-2xl p-6 shadow-corp-sm flex flex-col justify-between">
                     <div>
-                        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-teal">Direct Line</span>
-                        <h3 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mt-1">Let's Build Your Growth Engine</h3>
-                        <p class="text-slate-400 text-sm mt-3 leading-relaxed">Ready to scale your business with Johannesburg's top tech and growth engineering agency? Schedule your growth audit today.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-corp-lightBlue text-corp-blue">E-Commerce SA</span>
+                            <span class="text-xs text-corp-muted font-mono">Johannesburg</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-corp-navy mb-2">Apex Luxury Brands</h3>
+                        <p class="text-corp-muted text-xs leading-relaxed mb-6">
+                            Complete custom storefront overhaul on Next.js integrated with high-volume paid acquisition across South Africa and SADC regions.
+                        </p>
                     </div>
 
-                    <div class="space-y-4">
-                        <div class="glass-card p-4 rounded-xl flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-brand-teal/10 border border-brand-teal/30 flex items-center justify-center text-brand-teal">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div>
-                                <div class="text-xs font-semibold text-slate-400">Johannesburg Headquarters</div>
-                                <div class="text-sm font-bold text-white">Sandton City Office Towers, JHB</div>
-                            </div>
+                    <div class="pt-4 border-t border-corp-border space-y-2">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-corp-muted">Monthly Revenue Growth</span>
+                            <span class="text-emerald-600 font-bold">R250k ➔ R1.8M</span>
                         </div>
-
-                        <div class="glass-card p-4 rounded-xl flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
-                            <div>
-                                <div class="text-xs font-semibold text-slate-400">Direct Client Line</div>
-                                <div class="text-sm font-bold text-white">+27 (0) 11 593 2000</div>
-                            </div>
-                        </div>
-
-                        <div class="glass-card p-4 rounded-xl flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div>
-                                <div class="text-xs font-semibold text-slate-400">Growth Inquiries</div>
-                                <div class="text-sm font-bold text-white">growth@premierjessiedevs.co.za</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Dark Mode Styled Map Placeholder -->
-                    <div class="glass-card rounded-2xl h-48 overflow-hidden relative flex items-center justify-center border border-white/10">
-                        <div class="absolute inset-0 bg-slate-900 opacity-90"></div>
-                        <div class="relative z-10 text-center p-4">
-                            <i class="fa-solid fa-map-location-dot text-3xl text-brand-teal mb-2"></i>
-                            <div class="text-sm font-bold text-white">Sandton Central, Johannesburg</div>
-                            <div class="text-xs text-slate-400">Coordinates: 26.1076° S, 28.0567° E</div>
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-corp-muted">Attributed ROAS</span>
+                            <span class="text-corp-blue font-bold">8.4x Sustained</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Interactive Form Panel -->
-                <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-10 border border-white/10">
-                    <form id="growth-form" class="space-y-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Full Name *</label>
-                                <input type="text" required placeholder="John Doe" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Work Email *</label>
-                                <input type="email" required placeholder="john@company.co.za" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors">
-                            </div>
+                <!-- Case 2 -->
+                <div class="corporate-card rounded-2xl p-6 shadow-corp-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-corp-lightBlue text-corp-blue">B2B Enterprise SaaS</span>
+                            <span class="text-xs text-corp-muted font-mono">Sandton</span>
                         </div>
+                        <h3 class="text-xl font-bold text-corp-navy mb-2">PayFlow Billing Engine</h3>
+                        <p class="text-corp-muted text-xs leading-relaxed mb-6">
+                            Targeted account-based LinkedIn acquisition and custom CRM lead routing logic for fintech infrastructure enterprise.
+                        </p>
+                    </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Company Name</label>
-                                <input type="text" placeholder="Enterprise Ltd" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Monthly Budget Range</label>
-                                <select class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-slate-300 focus:outline-none focus:border-brand-teal transition-colors">
-                                    <option>R25,000 - R50,000 / pm</option>
-                                    <option>R50,000 - R150,000 / pm</option>
-                                    <option>R150,000+ / pm</option>
-                                </select>
-                            </div>
+                    <div class="pt-4 border-t border-corp-border space-y-2">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-corp-muted">Demo Booking Lift</span>
+                            <span class="text-emerald-600 font-bold">+340% Lift</span>
                         </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Growth Objectives & Requirements</label>
-                            <textarea rows="4" placeholder="Tell us about your current revenue goals, tech stack, or advertising challenges..." class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors"></textarea>
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-corp-muted">Customer Acquisition Cost</span>
+                            <span class="text-corp-blue font-bold">-42% Reduction</span>
                         </div>
+                    </div>
+                </div>
 
-                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-teal via-blue-500 to-indigo-600 text-slate-950 font-heading font-extrabold text-base shadow-xl shadow-brand-teal/20 hover:scale-[1.01] transition-transform">
-                            Submit Audit Request <i class="fa-solid fa-paper-plane ml-2"></i>
-                        </button>
+                <!-- Case 3 -->
+                <div class="corporate-card rounded-2xl p-6 shadow-corp-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-corp-lightBlue text-corp-blue">Financial Services</span>
+                            <span class="text-xs text-corp-muted font-mono">Sandton</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-corp-navy mb-2">Highveld Private Wealth</h3>
+                        <p class="text-corp-muted text-xs leading-relaxed mb-6">
+                            High-net-worth investor lead generation pipeline matched with automated KYC verification workflows.
+                        </p>
+                    </div>
 
-                        <div id="form-message" class="hidden text-center text-sm font-semibold p-3 rounded-lg"></div>
-                    </form>
+                    <div class="pt-4 border-t border-corp-border space-y-2">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-corp-muted">Capital Raised</span>
+                            <span class="text-emerald-600 font-bold">R140M New AUM</span>
+                        </div>
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-corp-muted">Lead-to-Call Conv</span>
+                            <span class="text-corp-blue font-bold">16.4% Rate</span>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- FOOTER -->
-        <footer class="mt-auto border-t border-white/10 bg-slate-950/80 glass-panel">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <!-- LOCAL PRESENCE & SANDTON HQ OFFICE -->
+        <section id="jhb-hq" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="corporate-card rounded-3xl p-8 sm:p-12 shadow-corp-lg overflow-hidden relative">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                     
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-2">
-                            <div class="w-8 h-8 rounded-lg bg-brand-teal flex items-center justify-center font-heading font-extrabold text-black text-sm">PJ</div>
-                            <span class="font-heading font-extrabold text-lg text-white">PremierJessie <span class="text-brand-teal">Devs</span></span>
+                    <!-- Left HQ Description -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-corp-lightBlue text-corp-blue text-xs font-bold uppercase border border-corp-blue/20">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                            Headquarters • Sandton Central
                         </div>
-                        <p class="text-xs text-slate-400 leading-relaxed">Enterprise web engineering & high-velocity digital acquisition agency headquartered in Sandton, Johannesburg.</p>
-                    </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-corp-navy">
+                            Located at the Financial Heart of Africa
+                        </h2>
+                        <p class="text-corp-muted text-sm sm:text-base leading-relaxed">
+                            Our primary growth studio is situated in Sandton, Johannesburg. We host executive strategy sessions, digital audits, and confidential growth planning for market leaders across South Africa and international territories.
+                        </p>
 
-                    <div>
-                        <h5 class="text-xs font-extrabold uppercase text-slate-200 tracking-wider mb-4">Core Services</h5>
-                        <ul class="space-y-2 text-xs text-slate-400">
-                            <li><a href="#services" class="hover:text-brand-teal">Custom Next.js & React Dev</a></li>
-                            <li><a href="#services" class="hover:text-brand-teal">High-Ticket Customer Acquisition</a></li>
-                            <li><a href="#services" class="hover:text-brand-teal">Johannesburg SEO Supremacy</a></li>
-                            <li><a href="#services" class="hover:text-brand-teal">Conversion Rate Optimization</a></li>
-                        </ul>
-                    </div>
+                        <div class="space-y-4 pt-2">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-corp-lightBlue border border-corp-blue/20 flex items-center justify-center text-corp-blue flex-shrink-0">
+                                    <i data-lucide="building" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-corp-muted uppercase">Address</div>
+                                    <div class="text-sm font-semibold text-corp-navy">138 West Street, Sandton Central, Johannesburg, 2196</div>
+                                </div>
+                            </div>
 
-                    <div>
-                        <h5 class="text-xs font-extrabold uppercase text-slate-200 tracking-wider mb-4">Company</h5>
-                        <ul class="space-y-2 text-xs text-slate-400">
-                            <li><a href="#pipeline" class="hover:text-brand-teal">Our Engine Process</a></li>
-                            <li><a href="#cases" class="hover:text-brand-teal">Impact & Case Studies</a></li>
-                            <li><a href="#calculator" class="hover:text-brand-teal">ROI Simulator Tool</a></li>
-                            <li><a href="#contact" class="hover:text-brand-teal">Schedule Audit</a></li>
-                        </ul>
-                    </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-corp-lightBlue border border-corp-blue/20 flex items-center justify-center text-corp-blue flex-shrink-0">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-corp-muted uppercase">Direct Email</div>
+                                    <div class="text-sm font-semibold text-corp-navy">growth@premierjessiedevs.co.za</div>
+                                </div>
+                            </div>
 
-                    <!-- Dynamic Johannesburg Time Clock Widget -->
-                    <div class="space-y-3">
-                        <h5 class="text-xs font-extrabold uppercase text-slate-200 tracking-wider">Johannesburg HQ Status</h5>
-                        <div class="glass-card p-3 rounded-xl border border-white/5">
-                            <div class="text-[10px] uppercase font-semibold text-slate-400">Local Time (JHB / SAST)</div>
-                            <div id="jhb-clock" class="text-lg font-mono font-bold text-brand-teal mt-0.5">00:00:00 SAST</div>
-                            <div class="flex items-center gap-1.5 text-[11px] text-emerald-400 font-semibold mt-1">
-                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> HQ Operations Open
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-corp-lightBlue border border-corp-blue/20 flex items-center justify-center text-corp-blue flex-shrink-0">
+                                    <i data-lucide="phone" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-corp-muted uppercase">Telephone</div>
+                                    <div class="text-sm font-semibold text-corp-navy">+27 (0)11 892 4000</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                </div>
+                    <!-- Right Vector Map Graphic -->
+                    <div class="lg:col-span-6 bg-corp-accentBg rounded-2xl p-6 border border-corp-border relative overflow-hidden min-h-[300px] flex flex-col justify-between">
+                        <div class="flex justify-between items-center z-10">
+                            <span class="text-xs font-bold text-corp-navy uppercase tracking-wider">Sandton HQ Coordinates</span>
+                            <span class="text-xs text-corp-blue font-mono">26.1076° S, 28.0567° E</span>
+                        </div>
 
-                <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-                    <div>© <span id="year-span"></span> PremierJessie Devs (Pty) Ltd. All Rights Reserved.</div>
-                    <div class="flex gap-6">
-                        <a href="#" class="hover:text-slate-400">Privacy Policy</a>
-                        <a href="#" class="hover:text-slate-400">Terms of Service</a>
-                        <a href="#" class="hover:text-slate-400">POPIA Compliance</a>
+                        <!-- Stylized Map Vector Visual -->
+                        <div class="my-6 relative h-48 bg-white rounded-xl border border-corp-border p-4 flex items-center justify-center shadow-corp-sm overflow-hidden">
+                            <div class="absolute inset-0 bg-[radial-gradient(#2563eb_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
+                            <div class="relative z-10 text-center space-y-2">
+                                <div class="w-12 h-12 bg-corp-blue text-white rounded-full flex items-center justify-center mx-auto shadow-lg shadow-corp-blue/30 animate-bounce">
+                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                </div>
+                                <div class="font-extrabold text-corp-navy text-base">PremierJessie Devs HQ</div>
+                                <div class="text-xs text-corp-muted font-medium">Sandton Central • Johannesburg</div>
+                            </div>
+                        </div>
+
+                        <button onclick="openBookingModal()" class="w-full bg-corp-navy hover:bg-corp-slate text-white font-bold py-3 rounded-xl text-sm transition-all text-center">
+                            Request In-Person Executive Meeting
+                        </button>
                     </div>
+
                 </div>
             </div>
-        </footer>
+        </section>
 
-        <!-- FLOATING CONSULTATION TRIGGER WIDGET -->
-        <div class="fixed bottom-6 right-6 z-50">
-            <button id="chat-widget-btn" class="w-14 h-14 rounded-full bg-gradient-to-r from-brand-teal to-blue-500 text-slate-950 font-bold text-xl flex items-center justify-center shadow-2xl shadow-brand-teal/40 hover:scale-110 transition-all animate-float">
-                <i class="fa-solid fa-comments"></i>
-            </button>
-            
-            <!-- Quick Consultation Popup -->
-            <div id="chat-popup" class="hidden absolute bottom-16 right-0 w-80 glass-panel rounded-2xl p-5 border border-brand-teal/30 shadow-2xl space-y-3">
-                <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                    <div class="flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                        <span class="text-xs font-bold text-white">JHB Growth Strategist</span>
-                    </div>
-                    <button id="chat-close-btn" class="text-slate-400 hover:text-white text-xs"><i class="fa-solid fa-xmark"></i></button>
+        <!-- METHODOLOGY & CONSULTING FRAMEWORK -->
+        <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-corp-blue font-bold uppercase text-xs tracking-widest bg-corp-lightBlue px-3.5 py-1.5 rounded-full border border-corp-blue/20">Rigorous Execution</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-corp-navy mt-4">
+                    The Growth Consulting Framework
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                
+                <div class="corporate-card p-6 rounded-2xl shadow-corp-sm relative">
+                    <span class="text-3xl font-extrabold text-corp-blue font-mono mb-2 block">01</span>
+                    <h3 class="text-lg font-bold text-corp-navy mb-2">Audit & Attribution</h3>
+                    <p class="text-corp-muted text-xs leading-relaxed">
+                        Full analysis of data pipelines, server-side CAPI tracking, and unit economic health before scaling spend.
+                    </p>
                 </div>
-                <p class="text-xs text-slate-300 leading-relaxed">Hi there! Looking to scale your user acquisition or modernize your tech platform in Johannesburg?</p>
-                <a href="#contact" class="block text-center py-2 bg-brand-teal text-slate-950 font-extrabold text-xs rounded-lg hover:bg-brand-teal/90 transition-colors">
-                    Request 15-Min Strategy Call
-                </a>
+
+                <div class="corporate-card p-6 rounded-2xl shadow-corp-sm relative">
+                    <span class="text-3xl font-extrabold text-corp-blue font-mono mb-2 block">02</span>
+                    <h3 class="text-lg font-bold text-corp-navy mb-2">Funnel Engineering</h3>
+                    <p class="text-corp-muted text-xs leading-relaxed">
+                        Rebuilding landing page assets, checkout mechanisms, and automated lead routing for maximum throughput.
+                    </p>
+                </div>
+
+                <div class="corporate-card p-6 rounded-2xl shadow-corp-sm relative">
+                    <span class="text-3xl font-extrabold text-corp-blue font-mono mb-2 block">03</span>
+                    <h3 class="text-lg font-bold text-corp-navy mb-2">Paid Media Scale</h3>
+                    <p class="text-corp-muted text-xs leading-relaxed">
+                        Omnichannel media deployment with algorithmic bidding, A/B creative matrices, and daily ROAS governance.
+                    </p>
+                </div>
+
+                <div class="corporate-card p-6 rounded-2xl shadow-corp-sm relative">
+                    <span class="text-3xl font-extrabold text-corp-blue font-mono mb-2 block">04</span>
+                    <h3 class="text-lg font-bold text-corp-navy mb-2">LTV Expansion</h3>
+                    <p class="text-corp-muted text-xs leading-relaxed">
+                        Lifecycle email/SMS automation and loyalty architectures that compound repeat revenue over time.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-corp-border bg-white relative z-10 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-corp-blue text-white flex items-center justify-center font-bold">
+                    <i data-lucide="trending-up" class="w-4 h-4"></i>
+                </div>
+                <span class="font-extrabold text-corp-navy text-base">PREMIERJESSIE <span class="text-corp-blue">DEVS</span></span>
+            </div>
+
+            <div class="text-xs text-corp-muted text-center md:text-left font-medium">
+                © 2026 PremierJessie Devs (Pty) Ltd. Sandton, Johannesburg, South Africa. All Rights Reserved.
+            </div>
+
+            <div class="flex space-x-6 text-corp-slate text-sm font-semibold">
+                <a href="#" class="hover:text-corp-blue transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-corp-blue transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-corp-blue transition-colors">Security</a>
             </div>
         </div>
+    </footer>
 
+    <!-- CONSULTATION BOOKING MODAL -->
+    <div id="bookingModal" class="fixed inset-0 bg-corp-navy/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white max-w-lg w-full rounded-3xl p-6 sm:p-8 border border-corp-border shadow-2xl relative">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-corp-muted hover:text-corp-navy p-2">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <div class="flex items-center gap-2 text-corp-blue text-xs font-bold uppercase mb-2">
+                <i data-lucide="calendar" class="w-4 h-4"></i>
+                Sandton Growth Consultation
+            </div>
+            <h3 class="text-2xl font-extrabold text-corp-navy mb-2">Schedule Strategy Call</h3>
+            <p class="text-corp-muted text-xs mb-6">Select your growth objective and reserve time with our senior growth partners.</p>
+
+            <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-corp-navy mb-1">Full Name *</label>
+                    <input type="text" required placeholder="Tendai Mokoena" class="w-full bg-corp-accentBg border border-corp-border rounded-xl px-4 py-2.5 text-sm text-corp-navy focus:outline-none focus:border-corp-blue">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-corp-navy mb-1">Work Email *</label>
+                    <input type="email" required placeholder="tendai@company.co.za" class="w-full bg-corp-accentBg border border-corp-border rounded-xl px-4 py-2.5 text-sm text-corp-navy focus:outline-none focus:border-corp-blue">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-corp-navy mb-1">Estimated Monthly Marketing Budget</label>
+                    <select class="w-full bg-corp-accentBg border border-corp-border rounded-xl px-4 py-2.5 text-sm text-corp-navy focus:outline-none focus:border-corp-blue">
+                        <option>R20,000 - R50,000 / mo</option>
+                        <option>R50,000 - R150,000 / mo</option>
+                        <option>R150,000 - R500,000 / mo</option>
+                        <option>R500,000+ / mo</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-corp-navy mb-1">Primary Objective</label>
+                    <textarea rows="2" placeholder="Describe current bottlenecks or scaling goals..." class="w-full bg-corp-accentBg border border-corp-border rounded-xl px-4 py-2.5 text-sm text-corp-navy focus:outline-none focus:border-corp-blue"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-corp-blue hover:bg-corp-blueHover text-white font-bold py-3.5 rounded-xl text-sm shadow-corp-md transition-all mt-2">
+                    Confirm Strategy Reservation
+                </button>
+            </form>
+        </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC & ANIMATIONS -->
+    <!-- JAVASCRIPT LOGIC & SIMULATOR CHART -->
     <script>
-        // 1. DYNAMIC CANVAS BACKGROUND NODE NETWORK
-        const canvas = document.getElementById('hero-canvas');
-        const ctx = canvas.getContext('2d');
+        // Initialize Lucide Icons
+        lucide.createIcons();
 
-        let particles = [];
-        let mouse = { x: null, y: null, radius: 150 };
+        // -------------------------------------------------------------
+        // 1. LIVE SAST (JOHANNESBURG) DIGITAL CLOCK
+        // -------------------------------------------------------------
+        function updateJHBClock() {
+            const options = {
+                timeZone: 'Africa/Johannesburg',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            const timeString = new Intl.DateTimeFormat([], options).format(new Date());
+            const clockEl = document.getElementById('jhbTime');
+            if (clockEl) {
+                clockEl.textContent = `Sandton HQ • ${timeString} SAST`;
+            }
+        }
+        setInterval(updateJHBClock, 1000);
+        updateJHBClock();
+
+        // -------------------------------------------------------------
+        // 2. HERO VECTOR GRID CANVAS (LIGHT THEME)
+        // -------------------------------------------------------------
+        const canvas = document.getElementById('heroCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let gridNodes = [];
 
         function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            if (!canvas) return;
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = 850;
         }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            initParticles();
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-
-            // Interactive Spotlight CSS variable update
-            document.documentElement.style.setProperty('--x', `${e.clientX}px`);
-            document.documentElement.style.setProperty('--y', `${e.clientY}px`);
-        });
-
-        class Particle {
+        class GridNode {
             constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.baseX = this.x;
-                this.baseY = this.y;
-                this.vx = (Math.random() - 0.5) * 0.8;
-                this.vy = (Math.random() - 0.5) * 0.8;
-            }
-
-            draw() {
-                ctx.fillStyle = '#00F0FF';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.closePath();
-                ctx.fill();
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
             }
 
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
 
-                if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
-                if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
 
-                // Mouse interaction physics
-                if (mouse.x && mouse.y) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < mouse.radius) {
-                        let force = (mouse.radius - distance) / mouse.radius;
-                        this.x -= (dx / distance) * force * 3;
-                        this.y -= (dy / distance) * force * 3;
-                    }
-                }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+                ctx.fillStyle = '#2563EB';
+                ctx.globalAlpha = 0.4;
+                ctx.fill();
             }
         }
 
-        function initParticles() {
-            particles = [];
-            const count = Math.min(Math.floor(window.innerWidth / 15), 90);
-            for (let i = 0; i < count; i++) {
-                particles.push(new Particle());
-            }
+        for (let i = 0; i < 45; i++) {
+            gridNodes.push(new GridNode());
         }
 
-        function connectParticles() {
-            for (let a = 0; a < particles.length; a++) {
-                for (let b = a; b < particles.length; b++) {
-                    let dx = particles[a].x - particles[b].x;
-                    let dy = particles[a].y - particles[b].y;
+        function animateCanvas() {
+            if (!ctx) return;
+            ctx.clearRect(0, 0, width, height);
+
+            for (let a = 0; a < gridNodes.length; a++) {
+                for (let b = a + 1; b < gridNodes.length; b++) {
+                    let dx = gridNodes[a].x - gridNodes[b].x;
+                    let dy = gridNodes[a].y - gridNodes[b].y;
                     let dist = Math.sqrt(dx * dx + dy * dy);
 
-                    if (dist < 120) {
-                        let opacity = 1 - (dist / 120);
-                        ctx.strokeStyle = `rgba(0, 240, 255, ${opacity * 0.25})`;
-                        ctx.lineWidth = 1;
+                    if (dist < 140) {
                         ctx.beginPath();
-                        ctx.moveTo(particles[a].x, particles[a].y);
-                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.moveTo(gridNodes[a].x, gridNodes[a].y);
+                        ctx.lineTo(gridNodes[b].x, gridNodes[b].y);
+                        ctx.strokeStyle = '#CBD5E1';
+                        ctx.globalAlpha = (1 - dist / 140) * 0.4;
+                        ctx.lineWidth = 1;
                         ctx.stroke();
                     }
                 }
             }
-        }
 
-        function animateCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
+            gridNodes.forEach(node => {
+                node.update();
+                node.draw();
             });
-            connectParticles();
+
             requestAnimationFrame(animateCanvas);
         }
 
-        // 2. LIVE ROI SIMULATOR CHART.JS INTEGRATION
-        let roiChartInstance = null;
+        window.onload = function() {
+            animateCanvas();
+            initCounters();
+            initChart();
+        };
 
-        function calculateROI() {
-            const spend = parseFloat(document.getElementById('input-spend').value);
-            const deal = parseFloat(document.getElementById('input-deal').value);
-            const traffic = parseFloat(document.getElementById('input-traffic').value);
-
-            // Update UI Labels
-            document.getElementById('spend-val').innerText = 'R' + spend.toLocaleString('en-ZA');
-            document.getElementById('deal-val').innerText = 'R' + deal.toLocaleString('en-ZA');
-            document.getElementById('traffic-val').innerText = traffic.toLocaleString('en-ZA');
-
-            // Business logic estimate: 2.5% conversion optimization rate
-            const projectedLeads = Math.round(traffic * 0.025);
-            const projectedRevenue = projectedLeads * (deal * 0.25); // estimated monthly closed conversion
-
-            document.getElementById('projected-leads').innerText = projectedLeads.toLocaleString('en-ZA');
-            document.getElementById('projected-rev').innerText = 'R' + Math.round(projectedRevenue).toLocaleString('en-ZA');
-
-            // Generate 6-month compounding data points
-            const chartData = [];
-            for (let month = 1; month <= 6; month++) {
-                const multiplier = 1 + (month * 0.22);
-                chartData.push(Math.round(projectedRevenue * multiplier));
-            }
-
-            updateChart(chartData);
+        // -------------------------------------------------------------
+        // 3. ANIMATED COUNTERS
+        // -------------------------------------------------------------
+        function initCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const speed = target / 40;
+                
+                const updateCount = () => {
+                    count += speed;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count);
+                        setTimeout(updateCount, 30);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
         }
 
-        function updateChart(dataPoints) {
-            const ctxChart = document.getElementById('roiChart').getContext('2d');
+        // -------------------------------------------------------------
+        // 4. CHART.JS GROWTH TRAJECTORY CALCULATOR
+        // -------------------------------------------------------------
+        let growthChart;
 
-            if (roiChartInstance) {
-                roiChartInstance.destroy();
-            }
+        function formatZAR(num) {
+            return 'R' + Math.round(num).toLocaleString('en-ZA');
+        }
 
-            roiChartInstance = new Chart(ctxChart, {
+        function initChart() {
+            const ctxChart = document.getElementById('growthChart').getContext('2d');
+            growthChart = new Chart(ctxChart, {
                 type: 'line',
                 data: {
                     labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'],
-                    datasets: [{
-                        label: 'Projected Revenue Growth (ZAR)',
-                        data: dataPoints,
-                        borderColor: '#00F0FF',
-                        borderWidth: 3,
-                        backgroundColor: 'rgba(0, 240, 255, 0.1)',
-                        fill: true,
-                        tension: 0.4,
-                        pointBackgroundColor: '#FFB800',
-                        pointRadius: 5
-                    }]
+                    datasets: [
+                        {
+                            label: 'Projected Monthly Pipeline (ZAR)',
+                            data: [300000, 500000, 800000, 1100000, 1500000, 2000000],
+                            borderColor: '#2563EB',
+                            backgroundColor: 'rgba(37, 99, 235, 0.08)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.35,
+                            pointRadius: 4,
+                            pointBackgroundColor: '#2563EB'
+                        }
+                    ]
                 },
                 options: {
                     responsive: true,
@@ -947,150 +963,117 @@
                     },
                     scales: {
                         x: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#94A3B8' }
+                            grid: { color: '#E2E8F0' },
+                            ticks: { color: '#64748B', font: { family: 'Plus Jakarta Sans', size: 11 } }
                         },
                         y: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            grid: { color: '#E2E8F0' },
                             ticks: {
-                                color: '#94A3B8',
-                                callback: function(value) { return 'R' + (value/1000) + 'k'; }
+                                color: '#64748B',
+                                font: { family: 'Plus Jakarta Sans', size: 11 },
+                                callback: function(value) {
+                                    return 'R' + (value / 1000) + 'k';
+                                }
                             }
                         }
                     }
                 }
             });
+
+            updateSimulator();
         }
 
-        // 3. SERVICE FILTERABLE SHOWCASE
-        const filterBtns = document.querySelectorAll('.service-filter-btn');
-        const serviceCards = document.querySelectorAll('.service-card');
+        const simSpend = document.getElementById('simSpend');
+        const simDeal = document.getElementById('simDeal');
+        const simConv = document.getElementById('simConv');
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => {
-                    b.classList.remove('bg-brand-teal', 'text-slate-950');
-                    b.classList.add('glass-panel', 'text-slate-300');
-                });
-                btn.classList.add('bg-brand-teal', 'text-slate-950');
-                btn.classList.remove('glass-panel', 'text-slate-300');
+        function updateSimulator() {
+            const spend = parseFloat(simSpend.value);
+            const deal = parseFloat(simDeal.value);
+            const conv = parseFloat(simConv.value);
 
-                const filter = btn.dataset.filter;
-                serviceCards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+            document.getElementById('simSpendVal').textContent = formatZAR(spend);
+            document.getElementById('simDealVal').textContent = formatZAR(deal);
+            document.getElementById('simConvVal').textContent = `${conv.toFixed(1)}% Rate`;
+
+            // Modeling formula
+            const estimatedClicks = spend / 18; // ~R18 CPC average
+            const qualifiedLeads = Math.round(estimatedClicks * (conv / 100));
+            const pipelineVal = qualifiedLeads * deal;
+            const roas = (pipelineVal / spend).toFixed(1);
+
+            document.getElementById('resLeads').textContent = qualifiedLeads.toLocaleString();
+            document.getElementById('resPipeline').textContent = 'R' + (pipelineVal / 1000000).toFixed(2) + 'M';
+            document.getElementById('resROASDisplay').textContent = `Est. Pipeline ROAS: ${roas}x`;
+
+            // Update Chart datasets
+            if (growthChart) {
+                const trajectory = [
+                    pipelineVal * 0.3,
+                    pipelineVal * 0.5,
+                    pipelineVal * 0.75,
+                    pipelineVal * 1.0,
+                    pipelineVal * 1.3,
+                    pipelineVal * 1.65
+                ];
+                growthChart.data.datasets[0].data = trajectory;
+                growthChart.update();
+            }
+        }
+
+        simSpend.addEventListener('input', updateSimulator);
+        simDeal.addEventListener('input', updateSimulator);
+        simConv.addEventListener('input', updateSimulator);
+
+        // -------------------------------------------------------------
+        // 5. SERVICE CAPABILITIES FILTER
+        // -------------------------------------------------------------
+        function filterServices(category) {
+            document.querySelectorAll('.svc-filter').forEach(btn => {
+                btn.classList.remove('bg-corp-blue', 'text-white', 'border-corp-blue');
+                btn.classList.add('bg-white', 'text-corp-slate', 'border-corp-border');
             });
-        });
+            event.target.classList.remove('bg-white', 'text-corp-slate', 'border-corp-border');
+            event.target.classList.add('bg-corp-blue', 'text-white', 'border-corp-blue');
 
-        // 4. INTERACTIVE 3D TILT CARDS
-        const tiltCards = document.querySelectorAll('.tilt-card');
-        tiltCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-            });
-        });
-
-        // 5. ANIMATED KEY STATS COUNTER
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            counters.forEach(counter => {
-                const target = parseFloat(counter.getAttribute('data-target'));
-                let count = 0;
-                const speed = target / 50;
-
-                const updateCount = () => {
-                    count += speed;
-                    if (count < target) {
-                        if (target % 1 !== 0) {
-                            counter.innerText = count.toFixed(1) + '%';
-                        } else {
-                            counter.innerText = '+' + Math.ceil(count) + '%';
-                        }
-                        setTimeout(updateCount, 30);
-                    } else {
-                        if (target === 150) counter.innerText = 'R150M+';
-                        else if (target === 99.4) counter.innerText = '99.4%';
-                        else if (target === 45) counter.innerText = '+45';
-                        else counter.innerText = '+' + target + '%';
-                    }
-                };
-                updateCount();
+            const cards = document.querySelectorAll('.svc-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-svc') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
             });
         }
 
-        // 6. JOHANNESBURG LOCAL TIME CLOCK
-        function updateJHBClock() {
-            const options = {
-                timeZone: 'Africa/Johannesburg',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-            };
-            const formatter = new Intl.DateTimeFormat([], options);
-            document.getElementById('jhb-clock').innerText = formatter.format(new Date()) + ' SAST';
+        // -------------------------------------------------------------
+        // 6. MODAL CONTROLLERS
+        // -------------------------------------------------------------
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.remove('hidden');
         }
 
-        // 7. FORM SUBMISSION HANDLER
-        document.getElementById('growth-form').addEventListener('submit', (e) => {
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function handleBookingSubmit(e) {
             e.preventDefault();
-            const msg = document.getElementById('form-message');
-            msg.classList.remove('hidden');
-            msg.classList.add('bg-emerald-500/20', 'text-emerald-400', 'border', 'border-emerald-500/30');
-            msg.innerText = '✓ Audit request submitted! A Sandton growth strategist will contact you within 2 hours.';
-            e.target.reset();
+            alert("Strategy Consultation Requested. Our Sandton office team will contact you within 2 business hours.");
+            closeBookingModal();
+        }
+
+        // Mobile drawer toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
         });
 
-        // 8. MOBILE MENU TOGGLE
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
         });
-
-        // 9. FLOATING CHAT WIDGET TOGGLE
-        const chatBtn = document.getElementById('chat-widget-btn');
-        const chatPopup = document.getElementById('chat-popup');
-        const chatClose = document.getElementById('chat-close-btn');
-
-        chatBtn.addEventListener('click', () => chatPopup.classList.toggle('hidden'));
-        chatClose.addEventListener('click', () => chatPopup.classList.add('hidden'));
-
-        // INITIALIZATION ON WINDOW LOAD
-        window.onload = function() {
-            resizeCanvas();
-            initParticles();
-            animateCanvas();
-
-            calculateROI();
-            document.getElementById('input-spend').addEventListener('input', calculateROI);
-            document.getElementById('input-deal').addEventListener('input', calculateROI);
-            document.getElementById('input-traffic').addEventListener('input', calculateROI);
-
-            animateCounters();
-            updateJHBClock();
-            setInterval(updateJHBClock, 1000);
-
-            document.getElementById('year-span').innerText = new Date().getFullYear();
-        };
     </script>
 </body>
 </html>
